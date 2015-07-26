@@ -375,6 +375,9 @@ Module Module1
         Return tipoUser
     End Function
 
+	
+	
+	
     Public Sub agregarRestauranteXml(abc As Administrador, rutaNew As String)
         listaRestaurantes.Add(abc.datosRestaXml(rutaNew))
     End Sub
