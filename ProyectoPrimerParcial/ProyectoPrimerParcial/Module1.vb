@@ -5,12 +5,16 @@ Module Module1
     Dim restau As Restaurante = New Restaurante()
     Dim listaUsuarios As New ArrayList()
     Dim listaRestaurantes As New ArrayList()
-    Dim listaCategoria As ArrayList = New ArrayList()
+    Dim listaCategorias As ArrayList = New ArrayList()
     Dim clien As Cliente
     Dim asist As Asistente
     Dim admin As Administrador
     Dim tipoUsuario As String
     Dim categ As String
+
+    Dim idUltimoPlatillo As Integer
+    Dim idUltimaCategoria As Integer
+
     Sub Main()
 
         Dim rutaXml As New String("G:\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
@@ -45,30 +49,7 @@ Module Module1
 
         Menu()
 
-
-        'Dim opcion As Integer
-        'Dim entrada
-        'Do Until opcion = 4
-        '    'Se pide al usuario elejir una opción del menú
-        '    Console.Write("Elija opcion: ")
-
-        '    'Valida la opción ingresada por el usuario, en caso de ser invalida, se le notifica
-        '    Try
-        '        entrada = Console.ReadLine()
-        '        opcion = CInt(entrada)
-        '    Catch ex As Exception
-        '        Console.WriteLine("Opción no valida, por favor elija otra opción")
-        '    End Try
-
-
-        '    Select Case opcion
-        '        Case 1
-        '            Console.WriteLine("...")
-        '        Case Else
-        '            Console.WriteLine("-")
-        '    End Select
-        'Loop
-        Console.ReadLine()
+        'Console.ReadLine()
     End Sub
 
     Public Sub cargarXml(ruta As String)
@@ -189,15 +170,21 @@ Module Module1
                     tempePlati = plati.Attributes(3).Value
                     tipoPlati = plati.Attributes(4).Value
                     descriPlati = plati.InnerText
-                    Dim platil As Platillo = New Platillo(idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, descriPlati)
+                    Dim platil As Platillo = New Platillo(idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, descriPlati, cate)
+
+
+                    idUltimoPlatillo = Integer.Parse(idPlati)
+                    GetRestauranteById(resIdPlati).AgregarPlatillo(platil)
 
                     cate.AgregarPlatillo(platil)
-                    restau.AgregarPlatillo(platil)
+                    'restau.AgregarPlatillo(platil)
 
 
                 Next
+                idUltimaCategoria = Integer.Parse(idCat)
+                listaCategorias.Add(cate)
+
                 restau.AgregarCategoria(cate)
-                listaCategoria.Add(cate)
             Next
         Next
     End Sub
@@ -205,16 +192,24 @@ Module Module1
     Public Sub Menu()
         Dim input As Integer
         Dim inputSub
-        Console.WriteLine("Catálogo de Delicias ")
 
-        Console.Write("Nombre de usuario: ")
-        Dim usuario As String = Console.ReadLine()
-        Console.Write("Contraseña: ")
-        Dim contraseña As String = Console.ReadLine()
+        Dim usuarioActivo As Usuario
 
+        Dim usuario, contrasenia, idAux As String
 
+        Do
+            'Console.Clear()
+            Console.WriteLine("Catálogo de Delicias ")
+            Console.Write("Nombre de usuario: ")
+            usuario = Console.ReadLine()
+            Console.Write("Contraseña: ")
+            contrasenia = Console.ReadLine()
+            idAux = ExisteUsuario(usuario, contrasenia)
+        Loop While idAux = "No existe"
 
-        tipoUsuario = ExisteUsuario(usuario, contraseña)
+        usuarioActivo = GetUsuarioById(idAux)
+
+        tipoUsuario = usuarioActivo.tipUsu
 
         Select Case tipoUsuario
             Case "cliente"
@@ -298,7 +293,8 @@ Module Module1
                     Console.WriteLine("1) Agregar platillo")
                     Console.WriteLine("2) Listar platillos (de mi restaurante)")
                     Console.WriteLine("3) Listar categorías de platillos")
-                    Console.WriteLine("4) Salir del sistema")
+                    Console.WriteLine("4) Log Out")
+                    Console.WriteLine("5) Salir del sistema")
                     Console.Write("Ingrese una opción: ")
                     input = Console.ReadLine()
 
@@ -306,29 +302,33 @@ Module Module1
                         Case 1
                             Console.Clear()
                             Console.WriteLine("1) Agregar platillo")
+                            AsisAgregarPlatillo(usuarioActivo.Id)
 
                             Console.Write("Presione ENTER para regresar")
                             Console.ReadLine()
 
-
                         Case 2
                             Console.Clear()
                             Console.WriteLine("2) Listar platillos (de mi restaurante)")
-
+                            AsisListarPlatillo(usuarioActivo.Id)
 
                             Console.Write("Presione ENTER para regresar")
                             Console.ReadLine()
                         Case 3
                             Console.Clear()
                             Console.WriteLine("3) Listar categorías de platillos")
-
+                            AsisListarCategorias(usuarioActivo.Id)
 
                             Console.Write("Presione ENTER para regresar")
                             Console.ReadLine()
+                        Case 4
+                            Console.Clear()
+
+                            Menu()
                     End Select
 
 
-                Loop Until (input = "4")
+                Loop Until (input = "5")
 
             Case "administrador"
                 Do
@@ -385,33 +385,21 @@ Module Module1
 
 
 
-    Public Function ExisteUsuario(usuario, contrasenia)
-        Dim existe As Boolean = False
-        Dim tipoUser As String = ""
-
-        'Do
+    Public Function ExisteUsuario(usuario, contrasenia) As String
+        Dim id As String = "No existe"
 
         For Each user As Usuario In listaUsuarios
-            'Console.WriteLine(user.Usuario)
-            'Console.WriteLine(user.Clave)
-            'Console.WriteLine(usuario)
-            'Console.WriteLine(contrasenia)
-
-
             If user.Usuario = usuario And user.Clave = contrasenia Then
-                tipoUser = user.tipUsu
-                existe = True
+                id = user.Id
             End If
         Next
 
-        If existe = True Then
-            Return tipoUser
-        Else
-            Console.WriteLine("Nombre De usuario o contraseña incorrecto, vuelva a intentarlo. ")
+        If id = "No existe" Then
+            Console.WriteLine("Nombre De usuario o contraseña incorrecto, Presione ENTER para volverlo a intentar.")
+            Console.ReadLine()
         End If
 
-        'Loop While existe = False
-        Return tipoUser
+        Return id
     End Function
 
 
@@ -432,7 +420,7 @@ Module Module1
 
 
     Public Sub ListarCategorias()
-        For Each categor As Categoria In listaCategoria
+        For Each categor As Categoria In listaCategorias
             Console.WriteLine("Título: " + categor.Nombre + "|| Número de platillos ofrecidos: " + CStr(categor.ListaPlatillos.Count))
 
 
@@ -444,7 +432,7 @@ Module Module1
 
         If tipoUsuario = "cliente" Then
 
-            For Each categor As Categoria In listaCategoria
+            For Each categor As Categoria In listaCategorias
                 If categoria = categor.Nombre Then
                     Dim total As Integer = categor.ListaPlatillos.Count - 1
                     For i = 0 To total Step 1
@@ -457,8 +445,6 @@ Module Module1
                             End If
                         Next
                     Next
-
-
 
                 End If
 
@@ -474,7 +460,7 @@ Module Module1
 
     Public Sub MostrarPlatillo(platillo)
 
-        For Each categor As Categoria In listaCategoria
+        For Each categor As Categoria In listaCategorias
             If categor.Nombre = categ Then
                 Dim total As Integer = categor.ListaPlatillos.Count - 1
                 For i = 0 To total Step 1
@@ -506,7 +492,7 @@ Module Module1
     End Sub
 
     Public Sub buscar(info)
-        For Each categor As Categoria In listaCategoria
+        For Each categor As Categoria In listaCategorias
 
             Dim total As Integer = categor.ListaPlatillos.Count - 1
             For i = 0 To total Step 1
@@ -531,6 +517,113 @@ Module Module1
 
 
 
+
+        Next
+
+    End Sub
+
+    Public Function GetRestauranteByAsistente(idAsistente As String) As Restaurante
+        For Each rest As Restaurante In listaRestaurantes
+            If rest.AsistenteId = idAsistente Then
+                Return rest
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Public Function GetRestauranteById(resIdPlati As String) As Restaurante
+        For Each rest As Restaurante In listaRestaurantes
+            If rest.Id = resIdPlati Then
+                Return rest
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Public Function GetUsuarioById(idUser As String) As Usuario
+        For Each user As Usuario In listaUsuarios
+            If user.Id = idUser Then
+                Return user
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Public Function GetCategoriaByNombre(nombreCat As String) As Categoria
+        For Each cat As Categoria In listaCategorias
+            If cat.Nombre = nombreCat Then
+                Return cat
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Public Sub AsisAgregarPlatillo(idAsistente As String)
+        Dim nombrePlati, catPlati, tempePlati, tipoPlati, descriPlati As String
+
+        Dim auxCat As Categoria
+        Dim newCat As Categoria
+        Dim newPlatillo As Platillo
+
+
+        Console.Write("Nombre: ")
+        nombrePlati = Console.ReadLine()
+
+        Console.Write("Categoría: ")
+        catPlati = Console.ReadLine()
+
+        Console.Write("Descripción: ")
+        descriPlati = Console.ReadLine()
+
+        Console.Write("Temperatura {caliente, frío}: ")
+        tempePlati = Console.ReadLine()
+
+        Console.Write("Tipo {aperitivo, plato fuerte, postre}: ")
+        tipoPlati = Console.ReadLine()
+
+        auxCat = GetCategoriaByNombre(catPlati)
+
+        If Not (auxCat Is Nothing) Then
+
+            newPlatillo = New Platillo((idUltimoPlatillo + 1).ToString, nombrePlati, GetRestauranteByAsistente(idAsistente).Id.ToString, tempePlati, tipoPlati, descriPlati, auxCat)
+            auxCat.AgregarPlatillo(newPlatillo)
+
+        Else
+            newCat = New Categoria((idUltimaCategoria + 1).ToString, catPlati)
+            newPlatillo = New Platillo((idUltimoPlatillo + 1).ToString, nombrePlati, GetRestauranteByAsistente(idAsistente).Id.ToString, tempePlati, tipoPlati, descriPlati, newCat)
+            newCat.AgregarPlatillo(newPlatillo)
+
+        End If
+
+        GetRestauranteByAsistente(idAsistente).AgregarPlatillo(newPlatillo)
+
+    End Sub
+
+
+    Public Sub AsisListarPlatillo(idAsistente As String)
+        Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
+
+        Console.WriteLine("Restaurante: " & res.Nombre)
+        Console.WriteLine("Nombre".PadRight(32) & "Categoría")
+        For Each plat As Platillo In res.Platillos
+            Console.WriteLine(plat.Nombre.ToString.PadRight(32) & plat.Categoria.Nombre)
+        Next
+
+    End Sub
+
+    Public Sub AsisListarCategorias(idAsistente As String)
+        Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
+        Dim auxIdRes As Integer = res.Id
+
+        Console.WriteLine("Restaurante: " & res.Nombre)
+        Console.WriteLine("Categorías")
+
+        For Each cat As Categoria In listaCategorias
+            For Each plat As Platillo In cat.ListaPlatillos
+                If plat.RestauranteId = auxIdRes Then
+                    Console.WriteLine(plat.Categoria.Nombre)
+                End If
+            Next
 
         Next
 

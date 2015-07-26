@@ -59,14 +59,24 @@
         End Set
     End Property
 
+    Private _categoria As Categoria
+    Public Property Categoria() As Categoria
+        Get
+            Return _categoria
+        End Get
+        Set(ByVal value As Categoria)
+            _categoria = value
+        End Set
+    End Property
 
-    Public Sub New(id As String, nombre As String, restauranteid As Integer, temperatura As String, tipo As String, descripcion As String)
+    Public Sub New(id As String, nombre As String, restauranteid As Integer, temperatura As String, tipo As String, descripcion As String, categoria As Categoria)
         Me._id = id
         Me._nombre = nombre
         Me._restauranteId = restauranteid
         Me._temperatura = temperatura
         Me._tipo = tipo
         Me._descripcion = descripcion
+        Me._categoria = Categoria
     End Sub
 
     Public Sub New()

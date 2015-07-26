@@ -6,4 +6,6 @@
 
         MyBase.New(tipoUsuario, id, nombre, usuario, clave)
     End Sub
+
+
 End Class
