@@ -1,0 +1,41 @@
+<sistema>
+<usuarios>
+<administradores>
+<administrador id="101" usuario="admin" clave="1234">Emma Ramírez</administrador>
+</administradores>
+<asistentes>
+<asistente id="102" usuario="asis1" clave="1234">Andrés Contreras</asistente>
+<asistente id="104" usuario="asis2" clave="1234">Letty Arauz</asistente>
+</asistentes>
+<clientes>
+<cliente id="103" usuario="clie1" clave="1234">Pepe Vera</cliente>
+<cliente id="105" usuario="clie2" clave="1234">Lucho Pogo</cliente>
+<cliente id="106" usuario="clie3" clave="1234">Karina Sanchez</cliente>
+</clientes>
+</usuarios>
+<restaurantes>
+<restaurante id="201" nombre="Rico Almuerzo" asistenteId="102">
+<direccion>Calle 1era #329 y calle 4ta</direccion>
+<telefono>2698348</telefono>
+<duenio>Jorge Martínez</duenio>
+</restaurante>
+<restaurante id="202" nombre="El Chino" asistenteId="104">
+<direccion>Av. Principal #1002 y calle 6ta</direccion>
+<telefono>6088348</telefono>
+<duenio>Mei Wong</duenio>
+</restaurante>
+</restaurantes>
+<categorias>
+<categoria id="301" nombre="Platos Típicos">
+<platillo id="401" nombre="Helado de vainilla" restauranteId="201" temperatura="frío" tipo="postre">Delicioso helado de vainilla como hecho en casa</platillo>
+<platillo id="402" nombre="Arroz menestra y carne asada" restauranteId="201" temperatura="caliente" tipo="plato fuerte">
+Arroz con menestra de fréjol y deliciosa carne asada
+</platillo>
+<platillo id="405" nombre="Arroz con tallarin saltado" restauranteId="202" temperatura="caliente" tipo="plato fuerte">Arroz con cerdo y tallarin saltado especial</platillo>
+<platillo id="406" nombre="Helado de vainilla" restauranteId="202" temperatura="Caliente" tipo="postre">Helado de vainilla frito</platillo>
+</categoria>
+<categoria id="302" nombre="Platos del mar">
+<platillo id="403" nombre="Ceviche mixto" restauranteId="201" temperatura="frío" tipo="aperitivo">Ceviche de camarón, concha y pescado</platillo>
+</categoria>
+</categorias>
+</sistema>

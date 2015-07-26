@@ -1,0 +1,36 @@
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+c:\users\carlos leon\documents\visual studio 2013\Projects\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+G:\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+I:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache

@@ -1,0 +1,35 @@
+<sistema>
+    <usuarios>
+        <administradores>
+            <administrador id="101" usuario="admin" clave="1234">Emma Ramírez</administrador>
+        </administradores>
+        <asistentes>
+            <asistente id="102" usuario="asis" clave="1234">Andrés Contreras</asistente>
+        </asistentes>
+        <clientes>
+            <cliente id="103" usuario="clie" clave="1234">Pepe Vera</cliente>
+        </clientes>
+    </usuarios>
+    <restaurantes>
+        <restaurante id="201" nombre="Rico Almuerzo" asistenteId="102">
+            <direccion>Calle 1era #329 y calle 4ta</direccion>
+            <telefono>2698348</telefono>
+            <duenio>Jorge Martínez</duenio>
+        </restaurante>
+    </restaurantes>
+    <categorias>
+        <categoria id="301" nombre="Platos Típicos">
+            <platillo id="401" nombre="Helado de vainilla" restauranteId="201" temperatura="frío" tipo="postre">
+                Delicioso helado de vainilla como hecho en casa
+            </platillo>
+            <platillo id="402" nombre="Arroz menestra y carne asada" restauranteId="201" temperatura="caliente" tipo="plato fuerte">
+                Arroz con menestra de fréjol y deliciosa carne asada
+            </platillo>
+        </categoria>
+        <categoria id="302" nombre="Platos del mar">
+            <platillo  id="403" nombre="Ceviche mixto" restauranteId="201" temperatura="frío" tipo="aperitivo">
+                Ceviche de camarón, concha y pescado
+            </platillo>
+        </categoria>
+    </categorias>
+</sistema>
