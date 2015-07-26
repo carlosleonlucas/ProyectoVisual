@@ -387,5 +387,8 @@ Module Module1
         Next
         Return 0
     End Function
-
+	
+Public Sub prueba(abc As Administrador, rutaNew As String)
+        listaRestaurantes.Add(abc.datosRestaXml(rutaNew))
+    End Sub
 End Module
