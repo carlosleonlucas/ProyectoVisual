@@ -10,6 +10,7 @@ Module Module1
     Sub Main()
 
         Dim rutaXml As New String("F:\Ejercicios Visual\ProyectoPrimerParcial\aaa.xml")
+        'HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
         'Dim admin As New Usuario
@@ -19,7 +20,7 @@ Module Module1
         'sistema.Add(admin)
         'sistema.Add(asist)
         'sistema.Add(clien)
-
+        ' maná maná 
         cargarXml(rutaXml)
         Console.WriteLine("Restaurantes: ")
         For Each res As Restaurante In listaRestaurantes
