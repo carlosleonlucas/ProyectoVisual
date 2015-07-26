@@ -34,3 +34,7 @@ F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\Proye
 F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
 F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
 F:\Ejercicios Visual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+G:\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+G:\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+G:\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+G:\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
