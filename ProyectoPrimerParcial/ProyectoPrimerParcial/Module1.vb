@@ -335,7 +335,8 @@ Module Module1
                     Console.Clear()
                     Console.WriteLine("1.- Agregar restaurante (desde XML) ")
                     Console.WriteLine("2.- Listar restaurante")
-                    Console.WriteLine("3.- Salir del sistema")
+                    Console.WriteLine("3.- Log Out")
+                    Console.WriteLine("4.- Salir del sistema")
                     Console.Write("Ingrese una opción: ")
                     input = Console.ReadLine()
 
@@ -358,22 +359,17 @@ Module Module1
                         Case 2
                             Console.Clear()
                             Console.WriteLine("2) Listar Restaurantes")
-                            Console.WriteLine("Restaurantes: ")
-                            For Each res As Restaurante In listaRestaurantes
-                                Console.WriteLine(res.Nombre)
-                            Next
+                            obtenerUsuario(tipoUsuario).listarRestaurantes(listaRestaurantes, listaUsuarios)
 
                             Console.Write("Presione ENTER para regresar")
                             Console.ReadLine()
                         Case 3
                             Console.Clear()
-                            Console.WriteLine("3) Listar categorías de platillos")
-
-
-                            Console.Write("Presione ENTER para regresar")
-                            Console.ReadLine()
+                            Menu()
+                        Case Else
+                            Console.WriteLine("Opción inválida, por favor ingrese una opción válida")
                     End Select
-                Loop Until (input = "3")
+                Loop Until (input = "4")
 
 
         End Select

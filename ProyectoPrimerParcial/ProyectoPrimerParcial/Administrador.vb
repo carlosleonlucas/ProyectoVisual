@@ -95,6 +95,39 @@ Public Class Administrador
         Return restau
     End Function
 
+    Public Sub listarRestaurantes(lista As ArrayList, listausu As ArrayList)
+        Console.WriteLine("Lista de Restaurantes: ")
+        For Each res As Restaurante In lista
+            Console.WriteLine("*******************************************")
+            Console.WriteLine("**                                       **")
+            Console.WriteLine("**                                       **")
+            Console.WriteLine("* Nombre: " + res.Nombre)
+            Console.WriteLine("* Dirección: " + res.Direccion)
+            Console.WriteLine("* Teléfono: " + res.Telefono)
+            Console.WriteLine("* Dueño: " + res.Dueno)
+            Dim asis As Asistente = obtenerUsuarioPorId(res.AsistenteId, listausu)
+            Console.WriteLine("* Asistente: " + asis.Nombre)
+            Console.WriteLine("* ")
+            Console.WriteLine("* Platillos ofrecidos: ")
+            For Each plati As Platillo In res.Platillos
+                Console.WriteLine("*    Nombre: " + plati.Nombre)
+                Console.WriteLine("*    Descripción: " + plati.Descripcion)
+                Console.WriteLine("*    Categoria: " + plati.Categoria.Nombre)
+                Console.WriteLine("*    Tipo: " + plati.Tipo)
+                Console.WriteLine("**                                       **")
+                Console.WriteLine("**                                       **")
+            Next
 
+        Next
+    End Sub
+
+    Public Function obtenerUsuarioPorId(id As String, lista As ArrayList)
+        For Each usu As Usuario In lista
+            If usu.Id = id Then
+                Return usu
+            End If
+        Next
+        Return 0
+    End Function
 
 End Class
