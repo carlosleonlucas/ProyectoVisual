@@ -295,7 +295,7 @@ Module Module1
                     Console.WriteLine("3) Listar categorías de platillos")
                     Console.WriteLine("4) Log Out")
                     Console.WriteLine("5) Salir del sistema")
-                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                    Console.Write(vbNewLine & "Ingrese una opción (1-5): ")
                     Try
                         input = Console.ReadLine()
                         Select Case input
@@ -309,22 +309,26 @@ Module Module1
                                 Console.ReadLine()
 
                             Case 2
-                                Console.Clear()
-                                Console.WriteLine("2) Listar platillos (de mi restaurante)")
-                                AsisListarPlatillo(usuarioActivo.Id)
-
-
                                 Do
-                                    Console.WriteLine(vbNewLine & "1) Mostrar platillo (escoger platillo de mi restaurante)")
-                                    Console.WriteLine("2) Modificar/actualizar platillo (escoger platillo de mi restaurante)")
-                                    Console.WriteLine("3) Regresar")
-                                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                                    Console.Clear()
+                                    Console.WriteLine("2) Listar platillos (de mi restaurante)")
+                                    AsisListarPlatillo(usuarioActivo.Id)
+
+                                    Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger platillo de mi restaurante)")
+                                    Console.WriteLine("2. Modificar/actualizar platillo (escoger platillo de mi restaurante)")
+                                    Console.WriteLine("3. Regresar")
+                                    Console.Write(vbNewLine & "Ingrese una opción (1-3): ")
+
+
+
                                     Try
                                         input = Console.ReadLine()
 
                                         Select Case input
                                             Case 1
-                                                Console.WriteLine(vbNewLine & "1) Mostrar platillo (escoger platillo de mi restaurante)")
+                                                Console.WriteLine(vbNewLine & "1) Mostrar platillo (escoger platillo de mi restaurante)" & vbNewLine)
+
+                                                AsisMostrarPlatillo(usuarioActivo.Id)
 
                                                 Console.Write(vbNewLine & "Presione ENTER para regresar")
                                                 Console.ReadLine()
@@ -346,38 +350,39 @@ Module Module1
                                         Console.ReadLine()
                                         Console.Clear()
                                     End Try
-                                    
+
                                 Loop Until (input = "3")
 
                             Case 3
-                                Console.Clear()
-                                Console.WriteLine("3) Listar categorías de platillos")
-                                AsisListarCategorias(usuarioActivo.Id)
-
                                 Do
+                                    Console.Clear()
+                                    Console.WriteLine("3) Listar categorías de platillos")
+                                    AsisListarCategorias(usuarioActivo.Id)
+
+
                                     Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger categoría)")
                                     Console.WriteLine("2. Regresar")
-                                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                                    Console.Write(vbNewLine & "Ingrese una opción (1-2): ")
                                     Try
                                         input = Console.ReadLine()
 
                                         Select Case input
                                             Case 1
-                                                Console.Clear()
-                                                Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger categoría)")
-
-
                                                 Do
+                                                    Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger categoría)")
+
+
+
                                                     Console.WriteLine(vbNewLine & "1.1. Mostrar platillo (escoger platillo de mi restaurante)")
                                                     Console.WriteLine("1.2. Modificar/actualizar platillo (escoger platillo de mi restaurante)")
                                                     Console.WriteLine("1.3. Regresar")
-                                                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                                                    Console.Write(vbNewLine & "Ingrese una opción (1-3): ")
                                                     Try
                                                         input = Console.ReadLine()
 
                                                         Select Case input
                                                             Case 1
-                                                                Console.Clear()
+
                                                                 Console.WriteLine(vbNewLine & "1.1. Mostrar platillo (escoger platillo de mi restaurante)")
 
                                                                 Console.Write(vbNewLine & "Presione ENTER para regresar")
@@ -392,34 +397,35 @@ Module Module1
                                                             Case Else
                                                                 Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
                                                                 Console.ReadLine()
-                                                                Console.Clear()
                                                         End Select
 
                                                     Catch ex As Exception
                                                         Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
                                                         Console.ReadLine()
-                                                        Console.Clear()
+
                                                     End Try
 
                                                 Loop Until (input = "3")
 
 
-                                            
+
                                             Case 2
 
                                             Case Else
                                                 Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
                                                 Console.ReadLine()
+                                                Console.Clear()
                                         End Select
 
                                     Catch ex As Exception
                                         Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
                                         Console.ReadLine()
+                                        Console.Clear()
                                     End Try
 
                                 Loop Until (input = "2")
 
-                                
+
                             Case 4
                                 Console.Clear()
 
@@ -612,17 +618,7 @@ Module Module1
                         End If
                     Next
                 End If
-
-
-
-
             Next
-
-
-
-
-
-
         Next
 
     End Sub
@@ -708,13 +704,62 @@ Module Module1
     Public Sub AsisListarPlatillo(idAsistente As String)
         Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
 
-        Console.WriteLine("Restaurante: " & res.Nombre)
-        Console.WriteLine("Nombre".PadRight(32) & "Categoría")
+        Console.WriteLine(vbNewLine & "Restaurante: " & res.Nombre & vbNewLine)
+        Console.WriteLine("ID".PadRight(8) & "Nombre".PadRight(32) & "Categoría")
+        Console.WriteLine("----------------------------------------------------------")
         For Each plat As Platillo In res.Platillos
-            Console.WriteLine(plat.Nombre.ToString.PadRight(32) & plat.Categoria.Nombre)
+            Console.WriteLine(plat.Id.ToString.PadRight(8) & plat.Nombre.ToString.PadRight(32) & plat.Categoria.Nombre)
         Next
 
     End Sub
+
+
+    Public Sub AsisMostrarPlatillo(idAsistente As String)
+        Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
+        Dim idPlato As Integer
+        Dim cont As Integer = 0
+
+        'Do
+        Console.Write("Ingrese la ID del platillo: ")
+        Try
+            idPlato = Integer.Parse(Console.ReadLine)
+
+            'Console.WriteLine(vbNewLine & "Nombre".PadRight(20) & "Restaurante".PadRight(20) & "Categoría")
+            'Console.WriteLine("----------------------------------------------------------")
+
+            For Each plat As Platillo In res.Platillos
+                If plat.Id = idPlato.ToString Then
+                    'Console.WriteLine(plat.Nombre.ToString.PadRight(20) & res.Nombre.PadRight(20) & plat.Categoria.Nombre)
+                    Console.WriteLine("-------------------------------------------------------------------------------")
+                    Console.WriteLine("ID:".PadRight(18) & plat.Id)
+                    Console.WriteLine("Nombre:".PadRight(18) & plat.Nombre)
+                    Console.WriteLine("Restaurante:".PadRight(18) & res.Nombre)
+                    Console.WriteLine("Categoría:".PadRight(18) & plat.Categoria.Nombre)
+                    Console.WriteLine("Temperatura:".PadRight(18) & plat.Temperatura)
+                    Console.WriteLine("Tipo:".PadRight(18) & plat.Tipo)
+                    Console.WriteLine("Descripción:".PadRight(18) & plat.Descripcion)
+                    Console.WriteLine("-------------------------------------------------------------------------------")
+                    cont = cont + 1
+                End If
+            Next
+
+            If cont = 0 Then
+                'Console.WriteLine("NULL".PadRight(20) & "NULL".PadRight(20) & "NULL")
+                Console.WriteLine(vbNewLine & "No existe un platillo con esa ID o no tiene los permisos")
+            End If
+
+        Catch ex As Exception
+            Console.WriteLine(vbNewLine & "ERROR, ID invalida. Vuelvalo a intentar")
+            'Console.ReadLine()
+        End Try
+
+        'Loop
+
+        
+
+    End Sub
+
+
 
     Public Sub AsisListarCategorias(idAsistente As String)
         Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
