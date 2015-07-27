@@ -52,3 +52,7 @@ C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimer
 C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
 C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
 C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+C:\Users\ESTUDIANTE\Documents\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+C:\Users\ESTUDIANTE\Documents\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+C:\Users\ESTUDIANTE\Documents\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+C:\Users\ESTUDIANTE\Documents\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
