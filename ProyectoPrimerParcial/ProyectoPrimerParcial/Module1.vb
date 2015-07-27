@@ -17,7 +17,7 @@ Module Module1
 
     Sub Main()
 
-        Dim rutaXml As New String("G:\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
+        Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
 
 
 
