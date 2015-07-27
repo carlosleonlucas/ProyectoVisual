@@ -17,7 +17,7 @@ Module Module1
 
     Sub Main()
 
-        Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
+        Dim rutaXml As New String("D:\aaa.xml")
 
 
 
@@ -295,37 +295,74 @@ Module Module1
                     Console.WriteLine("3) Listar categorías de platillos")
                     Console.WriteLine("4) Log Out")
                     Console.WriteLine("5) Salir del sistema")
-                    Console.Write("Ingrese una opción: ")
-                    input = Console.ReadLine()
+                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                    Try
+                        input = Console.ReadLine()
+                        Select Case input
+                            Case 1
+                                Console.Clear()
+                                Console.WriteLine("1) Agregar platillo")
+                                AsisAgregarPlatillo(usuarioActivo.Id)
 
-                    Select Case input
-                        Case 1
-                            Console.Clear()
-                            Console.WriteLine("1) Agregar platillo")
-                            AsisAgregarPlatillo(usuarioActivo.Id)
 
-                            Console.Write("Presione ENTER para regresar")
-                            Console.ReadLine()
+                                Console.Write(vbNewLine & "Presione ENTER para regresar")
+                                Console.ReadLine()
 
-                        Case 2
-                            Console.Clear()
-                            Console.WriteLine("2) Listar platillos (de mi restaurante)")
-                            AsisListarPlatillo(usuarioActivo.Id)
+                            Case 2
+                                Console.Clear()
+                                Console.WriteLine("2) Listar platillos (de mi restaurante)")
+                                AsisListarPlatillo(usuarioActivo.Id)
 
-                            Console.Write("Presione ENTER para regresar")
-                            Console.ReadLine()
-                        Case 3
-                            Console.Clear()
-                            Console.WriteLine("3) Listar categorías de platillos")
-                            AsisListarCategorias(usuarioActivo.Id)
 
-                            Console.Write("Presione ENTER para regresar")
-                            Console.ReadLine()
-                        Case 4
-                            Console.Clear()
+                                Do
+                                    Console.WriteLine(vbNewLine & "1) Mostrar platillo (escoger platillo de mi restaurante)")
+                                    Console.WriteLine("2) Modificar/actualizar platillo (escoger platillo de mi restaurante)")
+                                    Console.WriteLine("3) Regresar")
+                                    Console.Write(vbNewLine & "Ingrese una opción: ")
+                                    Try
+                                        input = Console.ReadLine()
 
-                            Menu()
-                    End Select
+                                        Select Case input
+                                            Case 1
+                                                Console.WriteLine(vbNewLine & "1) Mostrar platillo (escoger platillo de mi restaurante)")
+                                            Case 2
+                                                Console.WriteLine("2) Modificar/actualizar platillo (escoger platillo de mi restaurante)")
+                                            Case 3
+
+                                            Case Else
+                                                Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
+                                                Console.ReadLine()
+                                        End Select
+
+                                    Catch ex As Exception
+                                        Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
+                                        Console.ReadLine()
+                                    End Try
+                                    
+                                Loop Until (input = "3")
+
+                            Case 3
+                                Console.Clear()
+                                Console.WriteLine("3) Listar categorías de platillos")
+                                AsisListarCategorias(usuarioActivo.Id)
+
+                                Console.Write("Presione ENTER para regresar")
+                                Console.ReadLine()
+                            Case 4
+                                Console.Clear()
+
+                                Menu()
+                            Case 5
+
+                            Case Else
+                                Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
+                                Console.ReadLine()
+                        End Select
+
+                    Catch ex As Exception
+                        Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
+                        Console.ReadLine()
+                    End Try
 
 
                 Loop Until (input = "5")
