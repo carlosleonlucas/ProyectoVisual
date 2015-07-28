@@ -70,3 +70,12 @@ G:\PV\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\Proye
 G:\PV\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
 G:\PV\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
 G:\PV\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+D:\UVERfan\Documentos\ESPOL\EDCOM\GitHub\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
