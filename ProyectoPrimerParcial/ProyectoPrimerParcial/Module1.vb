@@ -765,60 +765,54 @@ Module Module1
 
             For Each cat As Categoria In listaCategorias
                 For Each plato As Platillo In cat.ListaPlatillos
-                    If plato.Restaurante Is restauranteAsociado Then
-                        If plato.Id = idPlato.ToString Then
+                    If plato.Restaurante Is restauranteAsociado And plato.Id = idPlato.ToString Then
 
-                            Console.WriteLine("-------------------------------------------------------------------------------")
+                        Console.WriteLine("-------------------------------------------------------------------------------")
 
-                            Console.Write("Nombre:".PadRight(18))
-                            newNombre = Console.ReadLine
-                            If newNombre <> "" Then
-                                plato.Nombre = newNombre
-                            End If
-
-                            Console.Write("Categoría:".PadRight(18))
-                            newNombreCategoria = Console.ReadLine
-
-                            If newNombreCategoria <> "" Or newNombreCategoria <> plato.Categoria.Nombre Then
-                                Console.WriteLine(newNombreCategoria)
-                                Console.WriteLine(plato.Categoria.Nombre)
-                                Console.WriteLine(cat.Nombre)
-
-                                Dim newCategoria As Categoria = New Categoria((idUltimaCategoria + 1).ToString, newNombreCategoria)
-                                listaCategorias.Add(newCategoria)
-
-                                newCategoria.AgregarPlatillo(plato)
-
-                                plato.Categoria.EliminarPlatillo(plato)
-
-                                plato.Categoria = newCategoria
-
-                            End If
-
-                            Console.Write("Temperatura:".PadRight(18))
-                            newTemperatura = Console.ReadLine
-                            If newTemperatura <> "" Then
-                                plato.Temperatura = newTemperatura
-                            End If
-
-                            Console.Write("Tipo:".PadRight(18))
-                            newTipo = Console.ReadLine
-                            If newTipo <> "" Then
-                                plato.Tipo = newTipo
-                            End If
-
-                            Console.Write("Descripción:".PadRight(18))
-                            newDescripcion = Console.ReadLine
-                            If newDescripcion <> "" Then
-                                plato.Descripcion = newDescripcion
-                            End If
-
-                            Console.WriteLine("-------------------------------------------------------------------------------")
-                            cont = cont + 1
-                            Exit For
+                        Console.Write("Nombre:".PadRight(18))
+                        newNombre = Console.ReadLine()
+                        If newNombre <> "" Then
+                            plato.Nombre = newNombre
                         End If
+
+                        Console.Write("Categoría:".PadRight(18))
+                        newNombreCategoria = Console.ReadLine()
+                        If (Not (newNombreCategoria Is "")) And Not (newNombreCategoria.Equals(plato.Categoria.Nombre)) Then
+                            Dim newCategoria As Categoria = New Categoria((idUltimaCategoria + 1).ToString, newNombreCategoria)
+                            listaCategorias.Add(newCategoria)
+
+                            newCategoria.AgregarPlatillo(plato)
+                            plato.Categoria.EliminarPlatillo(plato)
+                            plato.Categoria = newCategoria
+
+                            'If cat.ListaPlatillos.Count = 0 Then
+                            '    listaCategorias.Remove(cat)
+                            'End If
+                        End If
+
+                        Console.Write("Temperatura:".PadRight(18))
+                        newTemperatura = Console.ReadLine
+                        If newTemperatura <> "" Then
+                            plato.Temperatura = newTemperatura
+                        End If
+
+                        Console.Write("Tipo:".PadRight(18))
+                        newTipo = Console.ReadLine
+                        If newTipo <> "" Then
+                            plato.Tipo = newTipo
+                        End If
+
+                        Console.Write("Descripción:".PadRight(18))
+                        newDescripcion = Console.ReadLine
+                        If newDescripcion <> "" Then
+                            plato.Descripcion = newDescripcion
+                        End If
+
+                        Console.WriteLine("-------------------------------------------------------------------------------")
+                        cont = cont + 1
+                        Exit For
                     End If
-                    
+
                 Next
                 If cont <> 0 Then
                     Exit For
