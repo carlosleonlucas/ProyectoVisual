@@ -356,7 +356,7 @@ Module Module1
                                     AsisListarCategorias(usuarioActivo.Id)
 
 
-                                    Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger categoría)")
+                                    Console.WriteLine(vbNewLine & "1. Mostrar platillos (escoger categoría)")
                                     Console.WriteLine("2. Regresar")
                                     Console.Write(vbNewLine & "Ingrese una opción (1-2): ")
                                     Try
@@ -365,7 +365,7 @@ Module Module1
                                         Select Case input
                                             Case 1
                                                 Do
-                                                    Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger categoría)")
+                                                    Console.WriteLine(vbNewLine & "1. Mostrar platillos (escoger categoría)")
 
 
 
