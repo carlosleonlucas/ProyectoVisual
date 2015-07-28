@@ -33,6 +33,10 @@
         Me._platillos.Add(pla)
     End Sub
 
+    Public Sub EliminarPlatillo(pla As Platillo)
+        Me._platillos.Remove(pla)
+    End Sub
+
     Public Sub New(id As String, nombre As String, platillos As ArrayList)
         Me._id = id
         Me._nombre = nombre
