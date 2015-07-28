@@ -17,7 +17,7 @@ Module Module1
 
     Sub Main()
 
-        Dim rutaXml As New String("D:\aaa.xml")
+        Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
 
 
 
@@ -463,7 +463,7 @@ Module Module1
                             Dim rutaArchivo = Console.ReadLine
                             Try
                                 agregarRestauranteXml(obtenerUsuario(tipoUsuario), rutaArchivo)
-                                'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                Console.WriteLine("Restaurante agregado")
                             Catch ex As Exception
                                 Console.WriteLine("No se encontró archivo XML")
                             End Try
