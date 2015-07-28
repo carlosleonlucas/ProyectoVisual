@@ -685,9 +685,8 @@ Module Module1
             newCat = New Categoria((idUltimaCategoria + 1).ToString, catPlati)
             newPlatillo = New Platillo((idUltimoPlatillo + 1).ToString, nombrePlati, restauranteAsociado, tempePlati, tipoPlati, descriPlati, newCat)
             newCat.AgregarPlatillo(newPlatillo)
+            listaCategorias.Add(newCat)
         End If
-
-        'GetRestauranteByAsistente(idAsistente).AgregarPlatillo(newPlatillo)
 
     End Sub
 
@@ -830,19 +829,24 @@ Module Module1
     End Sub
 
     Public Sub AsisListarCategorias(idAsistente As String)
-        Dim res As Restaurante = GetRestauranteByAsistente(idAsistente)
-        Dim auxIdRes As Integer = res.Id
+        Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(idAsistente)
+        Dim catsAux As ArrayList = New ArrayList
 
-        Console.WriteLine("Restaurante: " & res.Nombre)
-        Console.WriteLine("Categorías")
+        Console.WriteLine("Restaurante: " & restauranteAsociado.Nombre)
+        Console.WriteLine("Categorías: ")
 
         For Each cat As Categoria In listaCategorias
-            For Each plat As Platillo In cat.ListaPlatillos
-                If plat.Restaurante.Id = auxIdRes Then
-                    Console.WriteLine(plat.Categoria.Nombre)
+            For Each plato As Platillo In cat.ListaPlatillos
+                If plato.Restaurante Is restauranteAsociado Then
+                    If Not (catsAux.Contains(cat)) Then
+                        catsAux.Add(cat)
+                    End If
                 End If
             Next
+        Next
 
+        For Each cat As Categoria In catsAux
+            Console.WriteLine(cat.Nombre)
         Next
 
     End Sub
