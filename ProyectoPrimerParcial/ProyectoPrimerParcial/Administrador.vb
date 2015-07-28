@@ -81,7 +81,7 @@ Public Class Administrador
                     tempePlati = plati.Attributes(3).Value
                     tipoPlati = plati.Attributes(4).Value
                     descriPlati = plati.InnerText
-                    Dim platil As Platillo = New Platillo(idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, descriPlati, cate)
+                    Dim platil As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, cate)
 
                     cate.AgregarPlatillo(platil)
                     restau.AgregarPlatillo(platil)

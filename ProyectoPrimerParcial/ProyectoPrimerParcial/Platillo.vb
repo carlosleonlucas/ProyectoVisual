@@ -19,13 +19,13 @@
         End Set
     End Property
 
-    Private _restauranteId As Integer
-    Public Property RestauranteId() As Integer
+    Private _restaurante As Restaurante
+    Public Property Restaurante() As Restaurante
         Get
-            Return _restauranteId
+            Return _restaurante
         End Get
-        Set(ByVal value As Integer)
-            _restauranteId = value
+        Set(ByVal value As Restaurante)
+            _restaurante = value
         End Set
     End Property
 
@@ -69,14 +69,14 @@
         End Set
     End Property
 
-    Public Sub New(id As String, nombre As String, restauranteid As Integer, temperatura As String, tipo As String, descripcion As String, categoria As Categoria)
+    Public Sub New(id As String, nombre As String, restaurante As Restaurante, temperatura As String, tipo As String, descripcion As String, categoria As Categoria)
         Me._id = id
         Me._nombre = nombre
-        Me._restauranteId = restauranteid
+        Me._restaurante = restaurante
         Me._temperatura = temperatura
         Me._tipo = tipo
         Me._descripcion = descripcion
-        Me._categoria = Categoria
+        Me._categoria = categoria
     End Sub
 
     Public Sub New()
