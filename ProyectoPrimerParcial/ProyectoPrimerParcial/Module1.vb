@@ -2,8 +2,8 @@
 
 
 Module Module1
-    Dim listaUsuarios As New ArrayList()
-    Dim listaRestaurantes As New ArrayList()
+    Dim listaUsuarios As ArrayList = New ArrayList()
+    Dim listaRestaurantes As ArrayList = New ArrayList()
     Dim listaCategorias As ArrayList = New ArrayList()
 
     Dim clien As Cliente
@@ -22,9 +22,10 @@ Module Module1
 
 
         cargarXml(rutaXml)
+
         Console.WriteLine("Restaurantes: ")
         For Each res As Restaurante In listaRestaurantes
-            Console.WriteLine(res.Nombre)
+            Console.WriteLine(res.Nombre & vbTab & res.Asistente.Nombre)
         Next
         Console.WriteLine("Usuarios: ")
         For Each usuario As Usuario In listaUsuarios
@@ -135,14 +136,14 @@ Module Module1
 
                         Next
 
-                        listaRestaurantes.Add(New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta))
+                        listaRestaurantes.Add(New Restaurante(idResta, nomResta, GetUsuarioById(asisIdResta), dirResta, telResta, dueResta))
                     Case Else
 
                 End Select
                 'Console.WriteLine("Restaurante--- id: {0}, nombre: {1}, asis: {2}, dir: {3}, tel: {4}, due: {5}", idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
 
             Next
-            Dim resta As New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
+            'Dim resta As New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
             'listaRestaurantes.Add(resta)
         Next
         ' *****************************************************************************************************
@@ -622,7 +623,7 @@ Module Module1
 
     Public Function GetRestauranteByAsistente(idAsistente As String) As Restaurante
         For Each rest As Restaurante In listaRestaurantes
-            If rest.AsistenteId = idAsistente Then
+            If rest.Asistente.Id = idAsistente Then
                 Return rest
             End If
         Next

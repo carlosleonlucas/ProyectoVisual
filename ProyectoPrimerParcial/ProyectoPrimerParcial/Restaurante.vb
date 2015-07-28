@@ -19,13 +19,13 @@
         End Set
     End Property
 
-    Private _asistenteid As Integer
-    Public Property AsistenteId() As Integer
+    Private _asistente As Asistente
+    Public Property Asistente() As Asistente
         Get
-            Return _asistenteid
+            Return _asistente
         End Get
-        Set(ByVal value As Integer)
-            _asistenteid = value
+        Set(ByVal value As Asistente)
+            _asistente = value
         End Set
     End Property
 
@@ -59,15 +59,6 @@
         End Set
     End Property
 
-    Private _categorias As ArrayList
-    Public Property Categorias() As ArrayList
-        Get
-            Return _categorias
-        End Get
-        Set(ByVal value As ArrayList)
-            _categorias = value
-        End Set
-    End Property
 
     Private _platillos As ArrayList
     Public Property Platillos() As ArrayList
@@ -80,48 +71,39 @@
     End Property
 
 
-   
-
-    Public Sub AgregarCategoria(cate As Categoria)
-        Me._categorias.Add(cate)
-    End Sub
+    
 
     Public Sub AgregarPlatillo(pla As Platillo)
         Me._platillos.Add(pla)
     End Sub
 
-    Public Sub New(id As String, nombre As String, asistenteid As Integer, direccion As String, telefono As String, dueno As String)
+    Public Sub New(id As String, nombre As String, asistente As Asistente, direccion As String, telefono As String, dueno As String)
         Me._id = id
         Me._nombre = nombre
-        Me._asistenteid = asistenteid
+        Me._asistente = asistente
         Me._direccion = direccion
         Me._telefono = telefono
         Me._dueno = dueno
-        Me._categorias = New ArrayList
         Me._platillos = New ArrayList
     End Sub
 
-    Public Sub New(id As String, nombre As String, asistenteid As Integer, direccion As String, telefono As String, dueno As String, categorias As ArrayList, platillos As ArrayList)
+    Public Sub New(id As String, nombre As String, asistente As Asistente, direccion As String, telefono As String, dueno As String, platillos As ArrayList)
         Me._id = id
         Me._nombre = nombre
-        Me._asistenteid = asistenteid
+        Me._asistente = asistente
         Me._direccion = direccion
         Me._telefono = telefono
         Me._dueno = dueno
-
-        Me._categorias = categorias
         Me._platillos = platillos
     End Sub
 
     Public Sub New()
         Me._id = 0
         Me._nombre = ""
-        Me._asistenteid = 0
+        Me._asistente = Nothing
         Me._direccion = ""
         Me._telefono = ""
         Me._dueno = ""
-
-        Me._categorias = New ArrayList
         Me._platillos = New ArrayList
     End Sub
 

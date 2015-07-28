@@ -49,7 +49,7 @@ Public Class Administrador
                             End Select
 
                         Next
-                        restau = New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
+                        'restau = New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
 
                     Case Else
 
@@ -57,7 +57,7 @@ Public Class Administrador
                 'Console.WriteLine("Restaurante--- id: {0}, nombre: {1}, asis: {2}, dir: {3}, tel: {4}, due: {5}", idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
 
             Next
-            Dim resta As New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
+            'Dim resta As New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
             'listaRestaurantes.Add(resta)
         Next
         ' *****************************************************************************************************
@@ -88,7 +88,7 @@ Public Class Administrador
 
 
                 Next
-                restau.AgregarCategoria(cate)
+                'restau.AgregarCategoria(cate)
             Next
         Next
 
@@ -105,7 +105,7 @@ Public Class Administrador
             Console.WriteLine("* Dirección:".PadRight(16) + res.Direccion)
             Console.WriteLine("* Teléfono:".PadRight(16) + res.Telefono)
             Console.WriteLine("* Dueño:".PadRight(16) + res.Dueno)
-            Dim asis As Asistente = obtenerUsuarioPorId(res.AsistenteId, listausu)
+            Dim asis As Asistente = obtenerUsuarioPorId(res.Asistente.Id, listausu)
             Console.WriteLine("* Asistente:".PadRight(16) + asis.Nombre)
             Console.WriteLine("* ")
             Console.WriteLine("* Platillos ofrecidos: ")
