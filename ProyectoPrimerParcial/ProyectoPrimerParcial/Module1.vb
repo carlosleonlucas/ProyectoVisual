@@ -12,9 +12,6 @@ Module Module1
     Dim tipoUsuario As String
     Dim categ As String
 
-    Dim idUltimoPlatillo As Integer
-    Dim idUltimaCategoria As Integer
-
     Sub Main()
 
         'Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
@@ -169,15 +166,9 @@ Module Module1
                     descriPlati = plati.InnerText
                     Dim platil As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, cate)
 
-
-                    idUltimoPlatillo = Integer.Parse(idPlati)
-                    'GetRestauranteById(resIdPlati).AgregarPlatillo(platil)
-
                     cate.AgregarPlatillo(platil)
 
-
                 Next
-                idUltimaCategoria = Integer.Parse(idCat)
                 listaCategorias.Add(cate)
 
             Next
@@ -186,7 +177,6 @@ Module Module1
 
     Public Sub Menu()
         Dim input As Integer
-        Dim inputSub
 
         Dim usuarioActivo As Usuario
 
@@ -589,44 +579,6 @@ Module Module1
         End Select
 
 
-
-        'Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(idAsistente)
-        'Dim idPlato As Integer
-        'Dim cont As Integer = 0
-
-        'Console.Write("Ingrese la ID del platillo: ")
-        'Try
-        '    idPlato = Integer.Parse(Console.ReadLine)
-
-        '    For Each cat As Categoria In listaCategorias
-        '        For Each plato As Platillo In cat.ListaPlatillos
-        '            If plato.Restaurante Is restauranteAsociado Then
-        '                If plato.Id = idPlato.ToString Then
-        '                    Console.WriteLine("-------------------------------------------------------------------------------")
-        '                    Console.WriteLine("ID:".PadRight(18) & plato.Id)
-        '                    Console.WriteLine("Nombre:".PadRight(18) & plato.Nombre)
-        '                    Console.WriteLine("Restaurante:".PadRight(18) & plato.Restaurante.Nombre)
-        '                    Console.WriteLine("Categoría:".PadRight(18) & plato.Categoria.Nombre)
-        '                    Console.WriteLine("Temperatura:".PadRight(18) & plato.Temperatura)
-        '                    Console.WriteLine("Tipo:".PadRight(18) & plato.Tipo)
-        '                    Console.WriteLine("Descripción:".PadRight(18) & plato.Descripcion)
-        '                    Console.WriteLine("-------------------------------------------------------------------------------")
-        '                    cont = cont + 1
-        '                End If
-        '            End If
-        '        Next
-        '    Next
-
-        '    If cont = 0 Then
-        '        Console.WriteLine(vbNewLine & "No existe un platillo con esa ID o no tiene los permisos")
-        '    End If
-
-        'Catch ex As Exception
-        '    Console.WriteLine(vbNewLine & "ERROR, ID invalida. Vuelvalo a intentar")
-        'End Try
-
-
-
         'If nomreCategoriaIngresada = categoria.Nombre Then
         '    Dim total As Integer = categoria.ListaPlatillos.Count - 1
         '    For i = 0 To total Step 1
@@ -756,11 +708,11 @@ Module Module1
         auxCat = GetCategoriaByNombre(catPlati)
 
         If Not (auxCat Is Nothing) Then
-            newPlatillo = New Platillo((idUltimoPlatillo + 1).ToString, nombrePlati, restauranteAsociado, tempePlati, tipoPlati, descriPlati, auxCat)
+            newPlatillo = New Platillo(nombrePlati, restauranteAsociado, tempePlati, tipoPlati, descriPlati, auxCat)
             auxCat.AgregarPlatillo(newPlatillo)
         Else
-            newCat = New Categoria((idUltimaCategoria + 1).ToString, catPlati)
-            newPlatillo = New Platillo((idUltimoPlatillo + 1).ToString, nombrePlati, restauranteAsociado, tempePlati, tipoPlati, descriPlati, newCat)
+            newCat = New Categoria(catPlati)
+            newPlatillo = New Platillo(nombrePlati, restauranteAsociado, tempePlati, tipoPlati, descriPlati, newCat)
             newCat.AgregarPlatillo(newPlatillo)
             listaCategorias.Add(newCat)
         End If
@@ -854,7 +806,7 @@ Module Module1
                         Console.Write("Categoría:".PadRight(18))
                         newNombreCategoria = Console.ReadLine()
                         If (Not (newNombreCategoria Is "")) And Not (newNombreCategoria.Equals(plato.Categoria.Nombre)) Then
-                            Dim newCategoria As Categoria = New Categoria((idUltimaCategoria + 1).ToString, newNombreCategoria)
+                            Dim newCategoria As Categoria = New Categoria(newNombreCategoria)
                             listaCategorias.Add(newCategoria)
 
                             newCategoria.AgregarPlatillo(plato)

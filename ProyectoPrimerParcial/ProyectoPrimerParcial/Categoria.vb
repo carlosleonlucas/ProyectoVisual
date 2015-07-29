@@ -1,4 +1,6 @@
 ﻿Public Class Categoria
+    Public Shared ultimaID As Integer
+
     Private _id As String
     Public Property Id() As String
         Get
@@ -39,14 +41,22 @@
 
     Public Sub New(id As String, nombre As String, platillos As ArrayList)
         Me._id = id
+        ultimaID = Integer.Parse(id)
         Me._nombre = nombre
         Me._platillos = platillos
     End Sub
 
     Public Sub New(id As String, nombre As String)
         Me._id = id
+        ultimaID = Integer.Parse(id)
         Me._nombre = nombre
         Me._platillos = New ArrayList
     End Sub
 
+    Public Sub New(nombre As String)
+        Me._id = (ultimaID + 1).ToString
+        ultimaID = Integer.Parse(id)
+        Me._nombre = nombre
+        Me._platillos = New ArrayList
+    End Sub
 End Class

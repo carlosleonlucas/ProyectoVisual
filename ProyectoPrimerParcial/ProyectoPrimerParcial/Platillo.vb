@@ -1,4 +1,6 @@
 ﻿Public Class Platillo
+    Public Shared ultimaID As Integer
+
     Private _id As String
     Public Property Id() As String
         Get
@@ -71,6 +73,7 @@
 
     Public Sub New(id As String, nombre As String, restaurante As Restaurante, temperatura As String, tipo As String, descripcion As String, categoria As Categoria)
         Me._id = id
+        ultimaID = Integer.Parse(id)
         Me._nombre = nombre
         Me._restaurante = restaurante
         Me._temperatura = temperatura
@@ -79,8 +82,14 @@
         Me._categoria = categoria
     End Sub
 
-    Public Sub New()
-
+    Public Sub New(nombre As String, restaurante As Restaurante, temperatura As String, tipo As String, descripcion As String, categoria As Categoria)
+        Me._id = (ultimaID + 1).ToString
+        Me._nombre = nombre
+        Me._restaurante = restaurante
+        Me._temperatura = temperatura
+        Me._tipo = tipo
+        Me._descripcion = descripcion
+        Me._categoria = categoria
     End Sub
 
 End Class
