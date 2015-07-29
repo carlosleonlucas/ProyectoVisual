@@ -1,35 +1,41 @@
 <sistema>
-    <usuarios>
-        <administradores>
-            <administrador id="101" usuario="admin" clave="1234">Emma Ramírez</administrador>
-        </administradores>
-        <asistentes>
-            <asistente id="102" usuario="asis" clave="1234">Andrés Contreras</asistente>
-        </asistentes>
-        <clientes>
-            <cliente id="103" usuario="clie" clave="1234">Pepe Vera</cliente>
-        </clientes>
-    </usuarios>
-    <restaurantes>
-        <restaurante id="201" nombre="Rico Almuerzo III" asistenteId="102">
-            <direccion>Calle 1era #329 y calle 4ta</direccion>
-            <telefono>2698348</telefono>
-            <duenio>Jorge Martínez</duenio>
-        </restaurante>
-    </restaurantes>
-    <categorias>
-        <categoria id="301" nombre="Platos Típicos II">
-            <platillo id="401" nombre="Helado de vainilla" restauranteId="201" temperatura="frío" tipo="postre">
-                Delicioso helado de vainilla como hecho en casa
-            </platillo>
-            <platillo id="402" nombre="Arroz menestra y carne asada" restauranteId="201" temperatura="caliente" tipo="plato fuerte">
-                Arroz con menestra de fréjol y deliciosa carne asada
-            </platillo>
-        </categoria>
-        <categoria id="302" nombre="Platos del mar">
-            <platillo  id="403" nombre="Ceviche mixto" restauranteId="201" temperatura="frío" tipo="aperitivo">
-                Ceviche de camarón, concha y pescado
-            </platillo>
-        </categoria>
-    </categorias>
+<usuarios>
+<administradores>
+<administrador id="111" usuario="admin" clave="1234">Emma Suarez</administrador>
+</administradores>
+<asistentes>
+<asistente id="112" usuario="asis3" clave="1234">Andy Contreras</asistente>
+<asistente id="114" usuario="asis4" clave="1234">Leticia Arauz</asistente>
+</asistentes>
+<clientes>
+<cliente id="113" usuario="clie4" clave="1234">Jose Vera</cliente>
+<cliente id="115" usuario="clie5" clave="1234">Luis Pogo</cliente>
+<cliente id="116" usuario="clie6" clave="1234">Camila Sanchez</cliente>
+</clientes>
+</usuarios>
+<restaurantes>
+<restaurante id="211" nombre="Rico Almuerzo II" asistenteId="112">
+<direccion>Calle 1era #329 y calle 4ta</direccion>
+<telefono>2698348</telefono>
+<duenio>Jorge Martínez</duenio>
+</restaurante>
+<restaurante id="212" nombre="El Chino II" asistenteId="114">
+<direccion>Av. Principal #1002 y calle 5ta</direccion>
+<telefono>6088348</telefono>
+<duenio>Mei Wong</duenio>
+</restaurante>
+</restaurantes>
+<categorias>
+<categoria id="311" nombre="Platos Típicos II">
+<platillo id="411" nombre="Helado de vainilla II" restauranteId="211" temperatura="frío" tipo="postre">Delicioso helado de vainilla como hecho en casa</platillo>
+<platillo id="412" nombre="Arroz menestra y carne asada II" restauranteId="211" temperatura="caliente" tipo="plato fuerte">
+Arroz con menestra de fréjol y deliciosa carne asada
+</platillo>
+<platillo id="415" nombre="Arroz con tallarin saltado II" restauranteId="212" temperatura="caliente" tipo="plato fuerte">Arroz con cerdo y tallarin saltado especial</platillo>
+<platillo id="416" nombre="Helado de vainilla II" restauranteId="212" temperatura="Caliente" tipo="postre">Helado de vainilla frito</platillo>
+</categoria>
+<categoria id="312" nombre="Platos del mar">
+<platillo id="413" nombre="Ceviche mixto" restauranteId="211" temperatura="frío" tipo="aperitivo">Ceviche de camarón, concha y pescado</platillo>
+</categoria>
+</categorias>
 </sistema>

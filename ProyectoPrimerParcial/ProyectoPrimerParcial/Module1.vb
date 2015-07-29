@@ -15,8 +15,8 @@ Module Module1
 
     Sub Main()
 
-        'Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
-        Dim rutaXml As New String("D:\sistemaPlatillos2.xml")
+        Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
+        'Dim rutaXml As New String("D:\sistemaPlatillos2.xml")
 
 
         cargarXml(rutaXml)
@@ -483,6 +483,7 @@ Module Module1
                             Dim rutaArchivo = Console.ReadLine
                             Try
                                 agregarRestauranteXml(obtenerUsuario(tipoUsuario), rutaArchivo)
+                                'cargarXml(rutaArchivo)
                                 Console.WriteLine("Restaurante agregado")
                             Catch ex As Exception
                                 Console.WriteLine("No se encontró archivo XML")
@@ -494,7 +495,7 @@ Module Module1
                         Case 2
                             Console.Clear()
                             Console.WriteLine("2) Listar Restaurantes")
-                            obtenerUsuario(tipoUsuario).listarRestaurantes(listaRestaurantes, listaUsuarios)
+                            obtenerUsuario(tipoUsuario).listarRestaurantes(listaRestaurantes, listaUsuarios, listaCategorias)
 
                             Console.Write("Presione ENTER para regresar")
                             Console.ReadLine()
@@ -531,7 +532,7 @@ Module Module1
 
 
     Public Sub agregarRestauranteXml(abc As Administrador, rutaNew As String)
-        listaRestaurantes.Add(abc.datosRestaXml(rutaNew))
+        listaRestaurantes.Add(abc.datosRestaXml(rutaNew, listaRestaurantes, listaCategorias, listaUsuarios))
     End Sub
 
 
