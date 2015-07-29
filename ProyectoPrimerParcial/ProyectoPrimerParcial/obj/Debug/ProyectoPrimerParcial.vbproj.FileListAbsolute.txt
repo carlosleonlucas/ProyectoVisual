@@ -88,3 +88,12 @@ C:\Users\Kenneth\Downloads\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerPa
 C:\Users\Kenneth\Downloads\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml
 C:\Users\Kenneth\Downloads\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
 C:\Users\Kenneth\Downloads\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe.config
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.exe
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.xml
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.pdb
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.Resources.resources
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\obj\Debug\ProyectoPrimerParcial.vbproj.GenerateResource.Cache
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.exe
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.pdb
+C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\ProyectoPrimerParcial\bin\Debug\ProyectoPrimerParcial.xml

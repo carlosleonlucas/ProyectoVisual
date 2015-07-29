@@ -15,7 +15,7 @@ Module Module1
 
     Sub Main()
 
-        Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
+        Dim rutaXml As New String("C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
         'Dim rutaXml As New String("D:\sistemaPlatillos2.xml")
 
 
@@ -717,10 +717,19 @@ Module Module1
         catPlati = Console.ReadLine()
         Console.Write("Descripción: ")
         descriPlati = Console.ReadLine()
-        Console.Write("Temperatura {caliente, frío}: ")
-        tempePlati = Console.ReadLine()
-        Console.Write("Tipo {aperitivo, plato fuerte, postre}: ")
-        tipoPlati = Console.ReadLine()
+        tempePlati = ""
+        Do
+            Console.Write("Temperatura {caliente, frío}: ")
+            tempePlati = Console.ReadLine()
+        Loop Until esTemperaturaValida(tempePlati)
+
+        tipoPlati = ""
+        Do
+            Console.Write("Tipo {aperitivo, plato fuerte, postre}: ")
+            tipoPlati = Console.ReadLine()
+        Loop Until esTipoValido(tipoPlati)
+
+
 
         auxCat = GetCategoriaByNombre(catPlati)
 
@@ -736,6 +745,26 @@ Module Module1
 
     End Sub
 
+    Public Function esTemperaturaValida(tempe As String)
+        If tempe = "caliente" Or tempe = "Caliente" Or tempe = "frío" Or tempe = "Frío" Then
+            Return True
+        Else
+            Console.WriteLine("Temperatura ingresada no valida")
+            Console.WriteLine("Por favor ingrese una de las mostradas en la lista")
+        End If
+        Return False
+    End Function
+
+    Public Function esTipoValido(tipo As String)
+        If tipo = "aperitivo" Or tipo = "Aperitivo" Or tipo = "plato fuerte" Or tipo = "Plato fuerte" Or tipo = "postre" Or tipo = "Postre" Then
+            Return True
+        Else
+            Console.WriteLine("Tipo ingresado no valido")
+            Console.WriteLine("Por favor ingrese uno de los mostrados en la lista")
+
+        End If
+        Return False
+    End Function
 
     Public Sub AsisListarPlatillo(idAsistente As String)
         Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(idAsistente)
@@ -835,17 +864,24 @@ Module Module1
                             'End If
                         End If
 
-                        Console.Write("Temperatura:".PadRight(18))
-                        newTemperatura = Console.ReadLine
-                        If newTemperatura <> "" Then
-                            plato.Temperatura = newTemperatura
-                        End If
+                        Do
+                            Console.Write("Temperatura:".PadRight(18))
+                            newTemperatura = Console.ReadLine
+                            If newTemperatura <> "" Then
+                                plato.Temperatura = newTemperatura
+                            End If
+                        Loop Until esTemperaturaValida(newTemperatura)
+                        
 
-                        Console.Write("Tipo:".PadRight(18))
-                        newTipo = Console.ReadLine
-                        If newTipo <> "" Then
-                            plato.Tipo = newTipo
-                        End If
+                        Do
+                            Console.Write("Tipo:".PadRight(18))
+                            newTipo = Console.ReadLine
+                            If newTipo <> "" Then
+                                plato.Tipo = newTipo
+                            End If
+                        Loop Until esTipoValido(newTipo)
+
+                        
 
                         Console.Write("Descripción:".PadRight(18))
                         newDescripcion = Console.ReadLine
