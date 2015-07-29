@@ -188,6 +188,7 @@ Module Module1
             Case "cliente"
                 Do
                     Console.Clear()
+                    cabecera()
                     Console.WriteLine("1) Listar categorías de platillos")
                     Console.WriteLine("2) Buscar platillo")
                     Console.WriteLine("3) LogOut")
@@ -204,6 +205,7 @@ Module Module1
                         Case 1
                             input = 0
                             Console.Clear()
+                            cabecera()
                             ListarCategorias()
                             Console.WriteLine("1) Mostrar platillos ")
                             Console.WriteLine("2) Regresar")
@@ -215,7 +217,7 @@ Module Module1
                             End Try
                             Select Case input
                                 Case 1
-
+                                    cabecera()
                                     input = 0
                                     Console.WriteLine(ControlChars.NewLine)
 
@@ -231,7 +233,7 @@ Module Module1
                                         End Try
                                         Select Case input
                                             Case 1
-
+                                                cabecera()
                                                 input = 0
                                                 Dim platiID As Integer
                                                 Console.WriteLine(ControlChars.NewLine)
@@ -257,6 +259,7 @@ Module Module1
                                 Case 2
                                     input = 2
                                     Console.Clear()
+                                    cabecera()
                                     Exit Select
                                     Exit Select
                                 Case Else
@@ -267,6 +270,8 @@ Module Module1
                             Console.Write("Presione ENTER para regresar")
 
                         Case 2
+                            Console.Clear()
+                            cabecera()
                             input = 0
                             Console.WriteLine("Ingrese parte del nombre o descripción de platillo a buscar: ")
                             Dim inf As String = Console.ReadLine()
@@ -582,6 +587,7 @@ Module Module1
 
         Dim cont As Integer = 0
         Console.Clear()
+        cabecera()
         ListarCategorias()
         Console.Write(vbNewLine & "Escoja el ID de una categoría (DOBLE ENTER para volver): ")
 
