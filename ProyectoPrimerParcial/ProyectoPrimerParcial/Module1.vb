@@ -187,10 +187,7 @@ Module Module1
         Select Case tipoUsuario
             Case "cliente"
                 Do
-                    'menuClienteActual = "menu0"
-                    'While menuClienteActual = "menu0"
                     Console.Clear()
-                    cabecera()
                     Console.WriteLine("1) Listar categorías de platillos")
                     Console.WriteLine("2) Buscar platillo")
                     Console.WriteLine("3) LogOut")
@@ -205,129 +202,116 @@ Module Module1
                     End Try
                     Select Case input
                         Case 1
-                            'menuClienteActual = "menu1"
-                            'While menuClienteActual = "menu1"
-                            Dim inputt As Integer
+                            input = 0
                             Console.Clear()
-                            cabecera()
                             ListarCategorias()
                             Console.WriteLine("1) Mostrar platillos ")
                             Console.WriteLine("2) Regresar")
                             Console.Write("Ingrese una opción: ")
 
                             Try
-                                inputt = Integer.Parse(Console.ReadLine())
+                                input = Integer.Parse(Console.ReadLine())
                             Catch ex As Exception
                             End Try
-                            Select Case inputt
+                            Select Case input
                                 Case 1
-                                    'menuClienteActual = "menu1.1"
-                                    'While menuClienteActual = "menu1.1"
-                                    'categ = Console.ReadLine()
-                                    cabecera()
+
+                                    input = 0
                                     Console.WriteLine(ControlChars.NewLine)
-                                    MostrarPlatillos(usuarioActivo)
-                                    Console.WriteLine(ControlChars.NewLine)
-                                    Console.WriteLine("1) Mostrar info de platillo de la lista anterior ")
-                                    Console.WriteLine("2) Regresar")
-                                    Console.Write("Ingrese una opción: ")
 
-                                    Dim inmp As Integer
-                                    Try
-                                        inmp = Console.ReadLine()
-                                    Catch ex As Exception
-                                    End Try
-                                    Select Case inmp
+                                    If MostrarPlatillos(usuarioActivo) Then
 
-                                        Case 1
-                                            'menuClienteActual = "menu1.1.1"
-                                            'While menuClienteActual = "menu1.1.1"
-                                            Dim platiID As Integer
-                                            Console.WriteLine(ControlChars.NewLine)
-                                            Console.Write("Ingrese el ID del platillo: ")
-                                            Try
-                                                platiID = CInt(Console.ReadLine())
-                                            Catch ex As Exception
-                                            End Try
-                                            Console.Clear()
-                                            MostrarPlatillo(platiID)
-                                            'End While
+                                        Console.WriteLine(ControlChars.NewLine)
+                                        Console.WriteLine("1) Mostrar info de platillo de la lista anterior ")
+                                        Console.WriteLine("2) Regresar")
+                                        Console.Write("Ingrese una opción: ")
+                                        Try
+                                            input = Console.ReadLine()
+                                        Catch ex As Exception
+                                        End Try
+                                        Select Case input
+                                            Case 1
 
-                                        Case 2
-                                            'menuClienteActual = "menu1.1"
-                                            Exit Select
-                                        Case Else
-                                            Console.WriteLine("Dato incorrecto , presione ENTER")
-                                    End Select
-                                    'End While
+                                                input = 0
+                                                Dim platiID As Integer
+                                                Console.WriteLine(ControlChars.NewLine)
+                                                Console.Write("Ingrese el ID del platillo: ")
+                                                Try
+                                                    platiID = CInt(Console.ReadLine())
+                                                Catch ex As Exception
+                                                End Try
+                                                Console.WriteLine(ControlChars.NewLine)
+                                                MostrarPlatillo(platiID)
+                                                Console.WriteLine(ControlChars.NewLine + "Opción incorrecta, Presione enter para regresar")
+                                                Console.ReadLine()
+                                            Case 2
+                                                input = 2
+                                                Exit Select
+                                            Case Else
+                                                input = 0
+                                                Console.Write("Opción incorrecta, Presione ENTER para regresar")
+                                                Console.ReadLine()
+
+                                        End Select
+                                    End If
                                 Case 2
+                                    input = 2
                                     Console.Clear()
-                                    'menuClienteActual = "menu0"
                                     Exit Select
                                     Exit Select
                                 Case Else
-                                    Console.Write("Opción incorrecta, Presione ENTER para volver a intentarlo")
+                                    input = 0
+                                    Console.Write("Opción incorrecta, Presione ENTER para regresar")
                                     Console.ReadLine()
                             End Select
                             Console.Write("Presione ENTER para regresar")
-                            'End While
+
                         Case 2
-                            'menuClienteActual = "menu2"
-                            'While menuClienteActual = "menu2"
-                            '    Console.Clear()
+                            input = 0
                             Console.WriteLine("Ingrese parte del nombre o descripción de platillo a buscar: ")
                             Dim inf As String = Console.ReadLine()
+                            Console.WriteLine(ControlChars.NewLine)
                             buscar(inf)
                             Console.WriteLine(ControlChars.NewLine)
                             Console.WriteLine("1) Mostrar platillo (Seleccionar platillo)")
                             Console.WriteLine("2) Regresar")
                             Console.Write("Ingrese una opción: ")
-                            Dim inp As Integer
                             Try
-                                inp = CInt(Console.ReadLine)
+                                input = CInt(Console.ReadLine())
                             Catch ex As Exception
                             End Try
-                            Select Case inp
+                            Select Case input
                                 Case 1
-                                    'menuClienteActual = "menu2.1"
-                                    'While menuClienteActual = "menu2.1"
                                     Console.WriteLine(ControlChars.NewLine)
-
                                     Console.Write("Seleccione el id del platillo a mostrar: ")
                                     Dim idplat As Integer
                                     Try
-                                        idplat = CInt(Console.ReadLine)
+                                        idplat = CInt(Console.ReadLine())
                                     Catch ex As Exception
                                     End Try
+
                                     MostrarPlatillo(idplat)
-                                    Console.WriteLine("Presione ENTER para volver")
+                                    idplat = 0
+                                    Console.Write("Presione ENTER para regresar")
                                     Console.ReadLine()
-                                    'End While
-
                                 Case 2
-
-                                    'menuClienteActual = "menu2"
                                     Exit Select
                                 Case Else
-                                    Console.WriteLine("Dato incorrecto , presione ENTER")
+                                    Console.Write("Opción incorrecta, Presione ENTER para regresar")
+                                    Console.ReadLine()
                             End Select
-                            'End While
-
                         Case 3
+                            input = 0
                             Console.Clear()
-                            'menuClienteActual = "salida"
-                            'Exit Select
-                            'Exit Select
                             Menu()
                         Case 4
+                            input = 0
                             End
                         Case Else
-                            Console.Write("Opción incorrecta, Presione ENTER para volver a intentarlo")
-
+                            input = 0
+                            Console.Write("Opción incorrecta, Presione ENTER para regresar")
+                            Console.ReadLine()
                     End Select
-                    'End While
-
-
                 Loop Until (input = "4")
                 ' ****************************************************************************************************************************************************
             Case "asistente"
