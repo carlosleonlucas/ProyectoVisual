@@ -21,24 +21,24 @@ Module Module1
 
         cargarXml(rutaXml)
 
-        Console.WriteLine("Restaurantes: ")
-        For Each res As Restaurante In listaRestaurantes
-            Console.WriteLine(res.Nombre & vbTab & res.Asistente.Nombre)
-        Next
-        Console.WriteLine("Usuarios: ")
-        For Each usuario As Usuario In listaUsuarios
-            Console.WriteLine(usuario.Usuario)
-        Next
+        'Console.WriteLine("Restaurantes: ")
+        'For Each res As Restaurante In listaRestaurantes
+        '    Console.WriteLine(res.Nombre & vbTab & res.Asistente.Nombre)
+        'Next
+        'Console.WriteLine("Usuarios: ")
+        'For Each usuario As Usuario In listaUsuarios
+        '    Console.WriteLine(usuario.Usuario)
+        'Next
 
-        Console.WriteLine("Categorias: ")
-        For Each cate As Categoria In listaCategorias
-            Console.WriteLine(cate.Nombre)
-            Console.WriteLine(vbTab & "Platillos: ")
-            For Each platillo As Platillo In cate.ListaPlatillos
+        'Console.WriteLine("Categorias: ")
+        'For Each cate As Categoria In listaCategorias
+        '    Console.WriteLine(cate.Nombre)
+        '    Console.WriteLine(vbTab & "Platillos: ")
+        '    For Each platillo As Platillo In cate.ListaPlatillos
 
-                Console.WriteLine(vbTab & platillo.Nombre)
-            Next
-        Next
+        '        Console.WriteLine(vbTab & platillo.Nombre)
+        '    Next
+        'Next
 
 
         
@@ -148,6 +148,15 @@ Module Module1
         Next
     End Sub
 
+    Public Sub cabecera()
+        Console.WriteLine("+--------------------------------------------------------------------------+")
+        Console.WriteLine("|".PadRight(75) & "|")
+        Console.WriteLine("|".PadRight(27) & "Catálogo de Restaurantes ".PadRight(48) & "|")
+        Console.WriteLine("|".PadRight(75) & "|")
+        Console.WriteLine("+--------------------------------------------------------------------------+")
+
+    End Sub
+
     Public Sub Menu()
         Dim input As Integer
         Dim usuarioActivo As Usuario
@@ -155,12 +164,15 @@ Module Module1
 
         Do
             'Console.Clear()
-            Console.WriteLine("Catálogo de Restaurantes ")
+
+            cabecera()
+          
             Console.Write("Nombre de usuario: ")
             usuario = Console.ReadLine()
             Console.Write("Contraseña: ")
             contrasenia = Console.ReadLine()
             idAux = ExisteUsuario(usuario, contrasenia)
+            Console.Clear()
         Loop While idAux = "No existe"
 
         usuarioActivo = GetUsuarioById(idAux)
@@ -173,6 +185,7 @@ Module Module1
                     'menuClienteActual = "menu0"
                     'While menuClienteActual = "menu0"
                     Console.Clear()
+                    cabecera()
                     Console.WriteLine("1) Listar categorías de platillos")
                     Console.WriteLine("2) Buscar platillo")
                     Console.WriteLine("3) LogOut")
@@ -191,6 +204,7 @@ Module Module1
                             'While menuClienteActual = "menu1"
                             Dim inputt As Integer
                             Console.Clear()
+                            cabecera()
                             ListarCategorias()
                             Console.WriteLine("1) Mostrar platillos ")
                             Console.WriteLine("2) Regresar")
@@ -472,6 +486,7 @@ Module Module1
             Case "administrador"
                 Do
                     Console.Clear()
+                    cabecera()
                     Console.WriteLine("1.- Agregar restaurante (desde XML) ")
                     Console.WriteLine("2.- Listar restaurante")
                     Console.WriteLine("3.- Log Out")
@@ -483,6 +498,7 @@ Module Module1
                     Select Case input
                         Case 1
                             Console.Clear()
+                            cabecera()
                             Console.WriteLine("Especifique la ruta del archivo XML")
                             Dim rutaArchivo = Console.ReadLine
                             Try
@@ -498,6 +514,7 @@ Module Module1
 
                         Case 2
                             Console.Clear()
+                            cabecera()
                             Console.WriteLine("2) Listar Restaurantes")
                             obtenerUsuario(tipoUsuario).listarRestaurantes(listaRestaurantes, listaUsuarios, listaCategorias)
 
