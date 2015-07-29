@@ -263,7 +263,7 @@ Module Module1
                                 Console.WriteLine("1) Agregar platillo")
                                 AsisAgregarPlatillo(usuarioActivo.Id)
 
-                                Console.Write(vbNewLine & "Platillo Ingresado con éxito")
+                                Console.WriteLine(vbNewLine & "Platillo Ingresado con éxito")
                                 Console.Write("Presione ENTER para regresar...")
                                 Console.ReadLine()
                             Case 2
@@ -293,7 +293,7 @@ Module Module1
 
                                                 AsisModificarPlatillo(usuarioActivo.Id)
 
-                                                Console.Write(vbNewLine & "Platillo Actualizado con éxito")
+                                                Console.WriteLine(vbNewLine & "Platillo Actualizado con éxito")
                                                 Console.Write("Presione ENTER para regresar...")
                                                 Console.ReadLine()
                                             Case 3
@@ -352,8 +352,9 @@ Module Module1
 
                                                                 AsisModificarPlatillo(usuarioActivo.Id)
 
-                                                                Console.Write(vbNewLine & "Platillo Actualizado con éxito")
+                                                                Console.WriteLine(vbNewLine & "Platillo Actualizado con éxito")
                                                                 Console.Write("Presione ENTER para regresar...")
+                                                                Console.ReadLine()
                                                             Case 3
 
                                                             Case Else
