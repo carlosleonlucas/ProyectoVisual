@@ -155,7 +155,7 @@ Module Module1
 
         Do
             'Console.Clear()
-            Console.WriteLine("Catálogo de Delicias ")
+            Console.WriteLine("Catálogo de Restaurantes ")
             Console.Write("Nombre de usuario: ")
             usuario = Console.ReadLine()
             Console.Write("Contraseña: ")
@@ -175,7 +175,8 @@ Module Module1
                     Console.Clear()
                     Console.WriteLine("1) Listar categorías de platillos")
                     Console.WriteLine("2) Buscar platillo")
-                    Console.WriteLine("3) Salir del sistema")
+                    Console.WriteLine("3) LogOut")
+                    Console.WriteLine("4) Salir del sistema")
                     Console.Write("Ingrese una opción: ")
                     Try
                         input = Integer.Parse(Console.ReadLine())
@@ -295,8 +296,11 @@ Module Module1
                         Case 3
                             Console.Clear()
                             'menuClienteActual = "salida"
-                            Exit Select
-                            Exit Select
+                            'Exit Select
+                            'Exit Select
+                            Menu()
+                        Case 4
+                            End
                         Case Else
                             Console.Write("Opción incorrecta, Presione ENTER para volver a intentarlo")
 
@@ -304,7 +308,7 @@ Module Module1
                     'End While
 
 
-                Loop Until (input = "3")
+                Loop Until (input = "4")
                 ' ****************************************************************************************************************************************************
             Case "asistente"
                 Do
@@ -502,6 +506,8 @@ Module Module1
                         Case 3
                             Console.Clear()
                             Menu()
+                        Case 4
+                            End
                         Case Else
                             Console.WriteLine("Opción inválida, por favor ingrese una opción válida")
                     End Select

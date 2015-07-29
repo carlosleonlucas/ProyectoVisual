@@ -68,33 +68,33 @@ Public Class Administrador
                 End Select
             Next
         Next
-        '' *****************************************************************************************************
-        'Dim categorias As XmlNodeList = xmlDoc.GetElementsByTagName("categorias")
-        'Dim idCat, nombreCat As String
-        'Dim idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, descriPlati As String
+        ' *****************************************************************************************************
+        Dim categorias As XmlNodeList = xmlDoc.GetElementsByTagName("categorias")
+        Dim idCat, nombreCat As String
+        Dim idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, descriPlati As String
 
-        'For Each categoriass As XmlNode In categorias
+        For Each categoriass As XmlNode In categorias
 
-        '    For Each categoriaSimple As XmlNode In categoriass
-        '        idCat = categoriaSimple.Attributes(0).Value
-        '        nombreCat = categoriaSimple.Attributes(1).Value
-        '        Dim cate As Categoria = New Categoria(idCat, nombreCat)
+            For Each categoriaSimple As XmlNode In categoriass
+                idCat = categoriaSimple.Attributes(0).Value
+                nombreCat = categoriaSimple.Attributes(1).Value
+                Dim cate As Categoria = New Categoria(idCat, nombreCat)
 
-        '        For Each plati As XmlNode In categoriaSimple
-        '            idPlati = plati.Attributes(0).Value
-        '            nombrePlati = plati.Attributes(1).Value
-        '            resIdPlati = plati.Attributes(2).Value
-        '            tempePlati = plati.Attributes(3).Value
-        '            tipoPlati = plati.Attributes(4).Value
-        '            descriPlati = plati.InnerText
-        '            Dim platil As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, cate)
+                For Each plati As XmlNode In categoriaSimple
+                    idPlati = plati.Attributes(0).Value
+                    nombrePlati = plati.Attributes(1).Value
+                    resIdPlati = plati.Attributes(2).Value
+                    tempePlati = plati.Attributes(3).Value
+                    tipoPlati = plati.Attributes(4).Value
+                    descriPlati = plati.InnerText
+                    Dim platil As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, cate)
 
-        '            cate.AgregarPlatillo(platil)
+                    cate.AgregarPlatillo(platil)
 
-        '        Next
-        '        listaCategorias.Add(cate)
-        '    Next
-        'Next
+                Next
+                listaCategorias.Add(cate)
+            Next
+        Next
 
         Return restau
     End Function
