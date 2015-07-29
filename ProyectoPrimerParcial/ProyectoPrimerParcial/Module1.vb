@@ -9,6 +9,7 @@ Module Module1
     Dim clien As Cliente
     Dim asist As Asistente
     Dim admin As Administrador
+
     Dim tipoUsuario As String
     Dim categ As String
 
@@ -49,47 +50,39 @@ Module Module1
     Public Sub cargarXml(ruta As String)
         Dim xmlDoc As New XmlDocument()
         xmlDoc.Load(ruta)
-
-
-
+        ' *****************************************************************************************************
         Dim usuarios As XmlNodeList = xmlDoc.GetElementsByTagName("usuarios")
         For Each usuarioss As XmlNode In usuarios
             For Each usuarioTipo As XmlNode In usuarioss
                 Select Case usuarioTipo.Name
                     Case "administradores"
                         For Each usuarioAdmin As XmlNode In usuarioTipo
-                            'Console.WriteLine(usuarioAdmin.Name)
                             Dim tipoUsuario = usuarioAdmin.Name
                             Dim idUsuAdmin = usuarioAdmin.Attributes(0).Value
                             Dim usuarioUsuAdmin = usuarioAdmin.Attributes(1).Value
                             Dim claveUsuAdmin = usuarioAdmin.Attributes(2).Value
                             Dim nombreUsuAdmin = usuarioAdmin.InnerText
-                            'Console.WriteLine("id:  {0}, nombre: {1}, usuario: {2}, clave: {3}", idUsuAdmin, nombreUsuAdmin, usuarioUsuAdmin, claveUsuAdmin)
                             admin = New Administrador(tipoUsuario, idUsuAdmin, nombreUsuAdmin, usuarioUsuAdmin, claveUsuAdmin)
                             listaUsuarios.Add(admin)
 
                         Next
                     Case "asistentes"
                         For Each usuarioAsist As XmlNode In usuarioTipo
-                            'Console.WriteLine(usuarioAsist.Name)
                             Dim tipoUsuario = usuarioAsist.Name
                             Dim idUsuAsist = usuarioAsist.Attributes(0).Value
                             Dim usuarioUsuAsist = usuarioAsist.Attributes(1).Value
                             Dim claveUsuAsist = usuarioAsist.Attributes(2).Value
                             Dim nombreUsuAsist = usuarioAsist.InnerText
-                            'Console.WriteLine("id:  {0}, nombre: {1}, usuario: {2}, clave: {3}", idUsuAsist, nombreUsuAsist, usuarioUsuAsist, claveUsuAsist)
                             asist = New Asistente(tipoUsuario, idUsuAsist, nombreUsuAsist, usuarioUsuAsist, claveUsuAsist)
                             listaUsuarios.Add(asist)
                         Next
                     Case "clientes"
                         For Each usuarioClien As XmlNode In usuarioTipo
-                            'Console.WriteLine(usuarioClien.Name)
                             Dim tipoUsuario = usuarioClien.Name
                             Dim idUsuClien = usuarioClien.Attributes(0).Value
                             Dim usuarioUsuClien = usuarioClien.Attributes(1).Value
                             Dim claveUsuClien = usuarioClien.Attributes(2).Value
                             Dim nombreUsuClien = usuarioClien.InnerText
-                            'Console.WriteLine("id:  {0}, nombre: {1}, usuario: {2}, clave: {3}", idUsuClien, nombreUsuClien, usuarioUsuClien, claveUsuClien)
                             clien = New Cliente(tipoUsuario, idUsuClien, nombreUsuClien, usuarioUsuClien, claveUsuClien)
                             listaUsuarios.Add(clien)
                         Next
@@ -98,53 +91,34 @@ Module Module1
                 End Select
             Next
         Next
+        ' *****************************************************************************************************
         Dim restaurantes As XmlNodeList = xmlDoc.GetElementsByTagName("restaurantes")
         Dim idResta, nomResta, asisIdResta, dirResta, telResta, dueResta As String
         For Each restaurantess As XmlNode In restaurantes
             For Each restauranteSimple As XmlNode In restaurantess
                 Select Case restauranteSimple.Name
                     Case "restaurante"
-
                         idResta = restauranteSimple.Attributes(0).Value
                         nomResta = restauranteSimple.Attributes(1).Value
                         asisIdResta = restauranteSimple.Attributes(2).Value
 
-
-                        'idResta = restauranteSimple.Attributes(0).Value
-                        'nomResta = restauranteSimple.Attributes(1).Value
-                        'asisIdResta = restauranteSimple.Attributes(2).Value
-
                         For Each restaurantePropiedades As XmlNode In restauranteSimple.ChildNodes
-
                             Select Case restaurantePropiedades.Name
                                 Case "direccion"
-
                                     dirResta = restaurantePropiedades.InnerText
-                                    'dirResta = restaurantePropiedades.InnerText
                                 Case "telefono"
                                     telResta = restaurantePropiedades.InnerText
-                                    'telResta = restaurantePropiedades.InnerText
                                 Case "duenio"
                                     dueResta = restaurantePropiedades.InnerText
-                                    'dueResta = restaurantePropiedades.InnerText
                                 Case Else
-
                             End Select
-
                         Next
 
                         listaRestaurantes.Add(New Restaurante(idResta, nomResta, GetUsuarioById(asisIdResta), dirResta, telResta, dueResta))
                     Case Else
-
                 End Select
-                'Console.WriteLine("Restaurante--- id: {0}, nombre: {1}, asis: {2}, dir: {3}, tel: {4}, due: {5}", idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
-
             Next
-            'Dim resta As New Restaurante(idResta, nomResta, asisIdResta, dirResta, telResta, dueResta)
-            'listaRestaurantes.Add(resta)
         Next
-        ' *****************************************************************************************************
-        ' *****************************************************************************************************
         ' *****************************************************************************************************
         Dim categorias As XmlNodeList = xmlDoc.GetElementsByTagName("categorias")
         Dim idCat, nombreCat As String
@@ -170,16 +144,13 @@ Module Module1
 
                 Next
                 listaCategorias.Add(cate)
-
             Next
         Next
     End Sub
 
     Public Sub Menu()
         Dim input As Integer
-
         Dim usuarioActivo As Usuario
-
         Dim usuario, contrasenia, idAux As String
 
         Do
@@ -274,7 +245,7 @@ Module Module1
 
 
                 Loop Until (input = "3")
-                '--------------------------------------------------------------------------------------------------------------------------------------------------------------
+                ' ****************************************************************************************************************************************************
             Case "asistente"
                 Do
                     Console.Clear()
@@ -398,8 +369,6 @@ Module Module1
 
                                                 Loop Until (input = "3")
 
-
-
                                             Case 2
 
                                             Case Else
@@ -415,7 +384,6 @@ Module Module1
                                     End Try
 
                                 Loop Until (input = "2")
-
 
                             Case 4
                                 Console.Clear()
@@ -433,11 +401,9 @@ Module Module1
                         Console.ReadLine()
                     End Try
 
-
                 Loop Until (input = "5")
 
-                '---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+                ' ****************************************************************************************************************************************************
             Case "administrador"
                 Do
                     Console.Clear()
@@ -482,11 +448,7 @@ Module Module1
 
         End Select
 
-
-
-
     End Sub
-
 
 
     Public Function ExisteUsuario(usuario, contrasenia) As String
