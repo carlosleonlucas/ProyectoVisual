@@ -224,6 +224,7 @@ Module Module1
                                     'menuClienteActual = "menu1.1"
                                     'While menuClienteActual = "menu1.1"
                                     'categ = Console.ReadLine()
+                                    cabecera()
                                     Console.WriteLine(ControlChars.NewLine)
                                     MostrarPlatillos(usuarioActivo)
                                     Console.WriteLine(ControlChars.NewLine)
@@ -332,6 +333,7 @@ Module Module1
             Case "asistente"
                 Do
                     Console.Clear()
+                    cabecera()
                     Console.WriteLine("1) Agregar platillo")
                     Console.WriteLine("2) Listar platillos (de mi restaurante)")
                     Console.WriteLine("3) Listar categorías de platillos")
@@ -343,6 +345,7 @@ Module Module1
                         Select Case input
                             Case 1
                                 Console.Clear()
+                                cabecera()
                                 Console.WriteLine("1) Agregar platillo")
                                 AsisAgregarPlatillo(usuarioActivo.Id)
 
@@ -352,6 +355,7 @@ Module Module1
                             Case 2
                                 Do
                                     Console.Clear()
+                                    cabecera()
                                     Console.WriteLine("2) Listar platillos (de mi restaurante)")
                                     AsisListarPlatillo(usuarioActivo.Id)
 
@@ -365,6 +369,7 @@ Module Module1
 
                                         Select Case input
                                             Case 1
+                                                cabecera()
                                                 Console.WriteLine(vbNewLine & "1. Mostrar platillo (escoger platillo de mi restaurante)" & vbNewLine)
 
                                                 AsisMostrarPlatillo(usuarioActivo.Id)
@@ -372,6 +377,7 @@ Module Module1
                                                 Console.Write(vbNewLine & "Presione ENTER para regresar...")
                                                 Console.ReadLine()
                                             Case 2
+                                                cabecera()
                                                 Console.WriteLine(vbNewLine & "2. Modificar/actualizar platillo (escoger platillo de mi restaurante)" & vbNewLine)
 
                                                 AsisModificarPlatillo(usuarioActivo.Id)
@@ -398,6 +404,7 @@ Module Module1
                             Case 3
                                 Do
                                     Console.Clear()
+                                    cabecera()
                                     Console.WriteLine("3) Listar categorías de platillos")
                                     ListarCategorias()
 
@@ -648,7 +655,7 @@ Module Module1
             End Select
 
         Catch ex As Exception
-            If idCategoriaIngresada = "" Then
+            If idCategoriaIngresada.ToString = "" Then
                 Console.WriteLine(vbNewLine & "ERROR, ID invalida. Presione ENTER para REGRESAR...")
                 Return False
 
