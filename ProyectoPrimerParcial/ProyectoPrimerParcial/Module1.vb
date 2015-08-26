@@ -15,41 +15,12 @@ Module Module1
 
     Sub Main()
 
-        '<<<<<<< HEAD
-        'Dim rutaXml As New String("C:\Users\Carlos Leon\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
-        Dim rutaXml As New String("D:\aaa.xml")
-        '=======
-        'Dim rutaXml As New String("C:\Users\ESTUDIANTE\Desktop\ProyectoVisual\ProyectoPrimerParcial\aaa.xml")
-        'Dim rutaXml As New String("D:\sistemaPlatillos2.xml")
-        '>>>>>>> origin/master
-
-
+        Dim rutaXml As New String("D:\sistemaPlatillos.xml")
+        
         cargarXml(rutaXml)
-
-        'Console.WriteLine("Restaurantes: ")
-        'For Each res As Restaurante In listaRestaurantes
-        '    Console.WriteLine(res.Nombre & vbTab & res.Asistente.Nombre)
-        'Next
-        'Console.WriteLine("Usuarios: ")
-        'For Each usuario As Usuario In listaUsuarios
-        '    Console.WriteLine(usuario.Usuario)
-        'Next
-
-        'Console.WriteLine("Categorias: ")
-        'For Each cate As Categoria In listaCategorias
-        '    Console.WriteLine(cate.Nombre)
-        '    Console.WriteLine(vbTab & "Platillos: ")
-        '    For Each platillo As Platillo In cate.ListaPlatillos
-
-        '        Console.WriteLine(vbTab & platillo.Nombre)
-        '    Next
-        'Next
-
 
 
         Menu()
-
-        'Console.ReadLine()
     End Sub
 
     Public Sub cargarXml(ruta As String)
@@ -142,7 +113,7 @@ Module Module1
                     resIdPlati = plati.Attributes(2).Value
                     tempePlati = plati.Attributes(3).Value
                     tipoPlati = plati.Attributes(4).Value
-                    descriPlati = plati.InnerText
+                    descriPlati = plati.InnerText.Trim
                     Dim platil As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, cate)
 
                     cate.AgregarPlatillo(platil)
@@ -206,7 +177,7 @@ Module Module1
                             input = 0
                             Console.Clear()
                             cabecera()
-                            ListarCategorias()
+                            ListarCategorias(usuarioActivo)
                             Console.WriteLine("1) Mostrar platillos ")
                             Console.WriteLine("2) Regresar")
                             Console.Write("Ingrese una opción: ")
@@ -326,9 +297,10 @@ Module Module1
                     Console.WriteLine("1) Agregar platillo")
                     Console.WriteLine("2) Listar platillos (de mi restaurante)")
                     Console.WriteLine("3) Listar categorías de platillos")
-                    Console.WriteLine("4) Log Out")
-                    Console.WriteLine("5) Salir del sistema")
-                    Console.Write(vbNewLine & "Ingrese una opción (1-5): ")
+                    Console.WriteLine("4) Agregar Platillos desde XML")
+                    Console.WriteLine("5) Log Out")
+                    Console.WriteLine("6) Salir del sistema")
+                    Console.Write(vbNewLine & "Ingrese una opción (1-6): ")
                     Try
                         input = Integer.Parse(Console.ReadLine())
                         Select Case input
@@ -395,7 +367,7 @@ Module Module1
                                     Console.Clear()
                                     cabecera()
                                     Console.WriteLine("3) Listar categorías de platillos")
-                                    ListarCategorias()
+                                    ListarCategorias(usuarioActivo)
 
                                     Console.WriteLine(vbNewLine & "1. Mostrar platillos (escoger categoría)")
                                     Console.WriteLine("2. Regresar")
@@ -446,6 +418,10 @@ Module Module1
                                                             Console.ReadLine()
 
                                                         End Try
+                                                    Else
+                                                        '*********************
+                                                        input = 3
+                                                        '*********************
                                                     End If
 
 
@@ -468,10 +444,40 @@ Module Module1
                                 Loop Until (input = "2")
 
                             Case 4
+
+                                ' ****************************************************************************************************************************************************
+                                'INICIO SUSTENTACION
+                                ' ****************************************************************************************************************************************************
+                                Console.Clear()
+                                cabecera()
+
+                                Dim nuevaRutaArchivo As String
+
+                                nuevaRutaArchivo = "D:\platillosExtras.xml"
+
+                                Try
+                                    cargarNuevoXmlSoloPlatillos(nuevaRutaArchivo)
+
+                                    Console.WriteLine("Platillos agregados")
+                                Catch ex As Exception
+                                    Console.WriteLine("No se encontró archivo XML")
+                                End Try
+                                Console.Write("Presione ENTER para regresar")
+                                Console.ReadLine()
+
+
+                                ' ****************************************************************************************************************************************************
+                                'FIN SUSTENTACION
+                                ' ****************************************************************************************************************************************************
+
+
+
+
+                            Case 5
                                 Console.Clear()
 
                                 Menu()
-                            Case 5
+                            Case 6
                                 End
                             Case Else
                                 Console.WriteLine("ERROR, ingrese una opcion correcta, presione ENTER para volver a intentar")
@@ -483,7 +489,7 @@ Module Module1
                         Console.ReadLine()
                     End Try
 
-                Loop Until (input = "5")
+                Loop Until (input = "6")
 
                 ' ****************************************************************************************************************************************************
             Case "administrador"
@@ -571,13 +577,75 @@ Module Module1
         Return 0
     End Function
 
-    Public Sub ListarCategorias()
-        Console.WriteLine(vbNewLine & "ID".PadRight(10) + "Título".PadRight(26) & "Número de platillos ofrecidos")
-        Console.WriteLine("--------------------------------------------------------")
-        For Each categor As Categoria In listaCategorias
-            Console.WriteLine(categor.Id.PadRight(10) + categor.Nombre.PadRight(26) & CStr(categor.ListaPlatillos.Count))
-        Next
+    Public Sub ListarCategorias(usuarioActivo As Usuario)
+        Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(usuarioActivo.Id)
+        Dim catsAux As ArrayList = New ArrayList
+
+        Dim cont As Integer = 0
+
+        Select Case usuarioActivo.tipUsu
+            Case "cliente"
+                Console.WriteLine(vbNewLine & "ID".PadRight(10) + "Título".PadRight(26) & "Número de platillos ofrecidos")
+                Console.WriteLine("--------------------------------------------------------")
+                For Each categor As Categoria In listaCategorias
+                    Console.WriteLine(categor.Id.PadRight(10) + categor.Nombre.PadRight(26) & CStr(categor.ListaPlatillos.Count))
+                Next
+            Case "asistente"
+
+                Console.WriteLine("Restaurante: " & restauranteAsociado.Nombre)
+                Console.WriteLine("Categorías: ")
+                Console.WriteLine(vbNewLine & "ID".PadRight(10) + "Título".PadRight(26) & "Número de platillos ofrecidos")
+                Console.WriteLine("--------------------------------------------------------")
+
+                For Each cat As Categoria In listaCategorias
+                    For Each plato As Platillo In cat.ListaPlatillos
+                        If plato.Restaurante Is restauranteAsociado Then
+                            cont = cont + 1
+                            If Not (catsAux.Contains(cat)) Then
+                                catsAux.Add(cat)
+                            End If
+                        End If
+                    Next
+
+                    Console.WriteLine(cat.Id.PadRight(10) + cat.Nombre.PadRight(26) & cont)
+
+                    cont = 0
+                Next
+
+
+
+        End Select
+
+
     End Sub
+
+
+
+    'Public Sub AsisListarCategorias(idAsistente As String)
+    '    Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(idAsistente)
+    '    Dim catsAux As ArrayList = New ArrayList
+
+    '    Console.WriteLine("Restaurante: " & restauranteAsociado.Nombre)
+    '    Console.WriteLine("Categorías: ")
+
+    '    For Each cat As Categoria In listaCategorias
+    '        For Each plato As Platillo In cat.ListaPlatillos
+    '            If plato.Restaurante Is restauranteAsociado Then
+    '                If Not (catsAux.Contains(cat)) Then
+    '                    catsAux.Add(cat)
+    '                End If
+    '            End If
+    '        Next
+    '    Next
+
+    '    For Each cat As Categoria In catsAux
+    '        Console.WriteLine(cat.Nombre)
+    '    Next
+
+    'End Sub
+
+
+
 
     Public Function MostrarPlatillos(usuarioActivo As Usuario) As Boolean
 
@@ -588,11 +656,15 @@ Module Module1
         Dim cont As Integer = 0
         Console.Clear()
         cabecera()
-        ListarCategorias()
+        ListarCategorias(usuarioActivo)
         Console.Write(vbNewLine & "Escoja el ID de una categoría (DOBLE ENTER para volver): ")
 
+        '************************************************
+        Dim ingreso As String = Console.ReadLine()
+        '************************************************
+
         Try
-            idCategoriaIngresada = Integer.Parse(Console.ReadLine())
+            idCategoriaIngresada = Integer.Parse(ingreso)
 
             Console.Clear()
             Select Case usuarioActivo.tipUsu
@@ -604,7 +676,6 @@ Module Module1
                         For Each plato As Platillo In categoria.ListaPlatillos
                             If idCategoriaIngresada = categoria.Id Then
                                 Console.WriteLine(plato.Id.ToString.PadRight(8) & plato.Nombre.PadRight(32) & plato.Restaurante.Nombre)
-                                Return True
                                 cont = cont + 1
                             End If
 
@@ -616,6 +687,10 @@ Module Module1
                         Console.Write("Presione ENTER para volver a intentar...")
                         Console.ReadLine()
                         Return False
+                        '******************************
+                    Else
+                        Return True
+                        '******************************
                     End If
 
                 Case "asistente"
@@ -628,7 +703,6 @@ Module Module1
                             If plato.Restaurante Is restauranteAsociado Then
                                 If idCategoriaIngresada = categoria.Id Then
                                     Console.WriteLine(plato.Id.ToString.PadRight(8) & plato.Nombre.PadRight(32))
-                                    Return True
                                     cont = cont + 1
                                 End If
 
@@ -641,18 +715,25 @@ Module Module1
                         Console.Write("Presione ENTER para volver a intentar...")
                         Console.ReadLine()
                         Return False
+                        '******************************
+                    Else
+                        Return True
+                        '*******************************
                     End If
             End Select
 
         Catch ex As Exception
-            If idCategoriaIngresada.ToString = "" Then
+            '************************************************************************************************
+            If ingreso = "" Then
+                Console.WriteLine(vbNewLine & "Presione ENTER para REGRESAR...")
+                Console.ReadLine()
+
+            Else
                 Console.WriteLine(vbNewLine & "ERROR, ID invalida. Presione ENTER para REGRESAR...")
-                Return False
-
+                Console.ReadLine()
             End If
-            Console.WriteLine(vbNewLine & "ERROR, ID invalida. Presione ENTER para REGRESAR...")
-            Console.ReadLine()
-
+            Return False
+            '************************************************************************************************
         End Try
 
         Return False
@@ -959,27 +1040,56 @@ Module Module1
 
     End Sub
 
-    'Public Sub AsisListarCategorias(idAsistente As String)
-    '    Dim restauranteAsociado As Restaurante = GetRestauranteByAsistente(idAsistente)
-    '    Dim catsAux As ArrayList = New ArrayList
 
-    '    Console.WriteLine("Restaurante: " & restauranteAsociado.Nombre)
-    '    Console.WriteLine("Categorías: ")
 
-    '    For Each cat As Categoria In listaCategorias
-    '        For Each plato As Platillo In cat.ListaPlatillos
-    '            If plato.Restaurante Is restauranteAsociado Then
-    '                If Not (catsAux.Contains(cat)) Then
-    '                    catsAux.Add(cat)
-    '                End If
-    '            End If
-    '        Next
-    '    Next
+    ' ****************************************************************************************************************************************************
+    'INICIO SUSTENTACION
+    ' ****************************************************************************************************************************************************
 
-    '    For Each cat As Categoria In catsAux
-    '        Console.WriteLine(cat.Nombre)
-    '    Next
 
-    'End Sub
+    Public Sub cargarNuevoXmlSoloPlatillos(ruta As String)
+        Dim xmlDoc As New XmlDocument()
+        Console.WriteLine("Ruta: " & ruta)
+        xmlDoc.Load(ruta)
+        
+
+        Dim listaNodoPlatillos As XmlNodeList = xmlDoc.GetElementsByTagName("platillos")
+        Dim idPlati, nombrePlati, resIdPlati, tempePlati, tipoPlati, cateIdPlati, descriPlati As String
+
+        For Each nodoPlatillos As XmlNode In listaNodoPlatillos
+
+            For Each plati As XmlNode In nodoPlatillos
+                idPlati = plati.Attributes(0).Value
+                nombrePlati = plati.Attributes(1).Value
+                resIdPlati = plati.Attributes(2).Value
+                tempePlati = plati.Attributes(3).Value
+                tipoPlati = plati.Attributes(4).Value
+                cateIdPlati = plati.Attributes(5).Value
+                descriPlati = plati.InnerText.Trim
+
+                Dim categoriaAux As Categoria = GetCategoriaByID(cateIdPlati)
+
+                Dim nuevoPlatillo As Platillo = New Platillo(idPlati, nombrePlati, GetRestauranteById(resIdPlati), tempePlati, tipoPlati, descriPlati, categoriaAux)
+
+                categoriaAux.AgregarPlatillo(nuevoPlatillo)
+            Next
+        Next
+    End Sub
+
+
+    Public Function GetCategoriaByID(idCat As String) As Categoria
+        For Each cat As Categoria In listaCategorias
+            If cat.Id = idCat Then
+                Return cat
+            End If
+        Next
+        Return Nothing
+    End Function
+
+
+    ' ****************************************************************************************************************************************************
+    'FIN SUSTENTACION
+    ' ****************************************************************************************************************************************************
+
 
 End Module
